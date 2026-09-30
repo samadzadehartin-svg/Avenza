@@ -1,8 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './AppBoutique.jsx'
+import App from './StoreNext.jsx'
 import Admin from './AdminBoutique.jsx'
 import './boutique.css'
+import './store-next.css'
 
 const isAdmin = /^\/admin\/?$/.test(window.location.pathname)
 if (isAdmin) {
