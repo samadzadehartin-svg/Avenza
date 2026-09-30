@@ -59,6 +59,10 @@
   .product-card:not(.is-expanded) .description{display:none}
   .product-card:not(.is-expanded) .product-thumbs{display:none}
   .product-card:not(.is-expanded) .option-group{display:none}
+  .product-card:not(.is-expanded) .price-line + .option-group{display:block;margin:7px 0 8px}
+  .product-card:not(.is-expanded) .price-line + .option-group>span{font-size:9px;margin-bottom:5px}
+  .product-card:not(.is-expanded) .price-line + .option-group .option-pills{gap:4px;flex-wrap:nowrap;overflow:auto;padding-bottom:1px}
+  .product-card:not(.is-expanded) .price-line + .option-group .option-pills button{flex:0 0 auto;min-width:32px;padding:5px 7px;font-size:9px;border-radius:7px}
   .product-card:not(.is-expanded) .stock-line{font-size:9px;margin:7px 0 9px}
   .product-card:not(.is-expanded) .primary{min-height:40px;padding:9px 10px;font-size:11px}
   .product-card.is-expanded{grid-column:1/-1;display:block;min-height:0}
