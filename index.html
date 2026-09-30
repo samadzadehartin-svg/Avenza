@@ -3,12 +3,53 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#17110f" />
-    <meta name="description" content="AVENZA Collection — فروش تکی و عمده پوشاک" />
+    <meta name="theme-color" content="#111111" />
+    <meta name="description" content="AVENZA Collection — فروش تکی و عمده پوشاک در تهران" />
     <title>AVENZA Collection</title>
+    <style>
+      .avenza-contact-static{background:#fff;color:#111;border-top:1px solid #e8e8e8;padding:52px max(28px,calc((100vw - 1320px)/2));font-family:"IRANSansX","IRANSans","IranSans",Vazirmatn,Tahoma,Arial,sans-serif}
+      .avenza-contact-static__inner{display:grid;grid-template-columns:.8fr 1.2fr;gap:64px;align-items:start}
+      .avenza-contact-static__title{margin:0;font-size:clamp(28px,4vw,48px);font-weight:900;letter-spacing:-1px}
+      .avenza-contact-static__eyebrow{display:block;font-size:11px;font-weight:800;letter-spacing:2px;color:#9b7b50;margin-bottom:12px}
+      .avenza-contact-static__items{display:grid;gap:14px}
+      .avenza-contact-static__item{display:flex;gap:14px;align-items:flex-start;padding:16px 0;border-bottom:1px solid #eee}
+      .avenza-contact-static__item strong{min-width:92px;font-size:13px}
+      .avenza-contact-static__item a,.avenza-contact-static__item span{color:#444;line-height:1.9;font-size:14px;text-decoration:none}
+      .avenza-contact-static__item a:hover{color:#000;text-decoration:underline}
+      @media(max-width:720px){.avenza-contact-static{padding:42px 20px}.avenza-contact-static__inner{grid-template-columns:1fr;gap:26px}.avenza-contact-static__item{display:block}.avenza-contact-static__item strong{display:block;margin-bottom:6px}}
+    </style>
+    <script type="application/ld+json">
+      {
+        "@context":"https://schema.org",
+        "@type":"ClothingStore",
+        "name":"AVENZA Collection",
+        "telephone":"+989108456261",
+        "sameAs":["https://www.instagram.com/Avenza_co/"],
+        "address":{
+          "@type":"PostalAddress",
+          "addressLocality":"تهران",
+          "streetAddress":"فردوسی، نبش جمهوری، پاساژ کویتی‌های استانبول، واحد ۱۰۱پ",
+          "addressCountry":"IR"
+        }
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>
+    <section class="avenza-contact-static" id="contact" aria-label="اطلاعات تماس AVENZA">
+      <div class="avenza-contact-static__inner">
+        <div>
+          <span class="avenza-contact-static__eyebrow">CONTACT · AVENZA</span>
+          <h2 class="avenza-contact-static__title">ارتباط با AVENZA</h2>
+        </div>
+        <div class="avenza-contact-static__items">
+          <div class="avenza-contact-static__item"><strong>اینستاگرام</strong><a href="https://www.instagram.com/Avenza_co/" target="_blank" rel="noreferrer">@Avenza_co</a></div>
+          <div class="avenza-contact-static__item"><strong>تماس</strong><a href="tel:09108456261" dir="ltr">09108456261</a></div>
+          <div class="avenza-contact-static__item"><strong>واتساپ</strong><a href="https://wa.me/989108456261" target="_blank" rel="noreferrer" dir="ltr">09108456261</a></div>
+          <div class="avenza-contact-static__item"><strong>آدرس</strong><span>تهران، فردوسی، نبش جمهوری، پاساژ کویتی‌های استانبول، واحد ۱۰۱پ</span></div>
+        </div>
+      </div>
+    </section>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
