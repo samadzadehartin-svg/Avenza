@@ -1,0 +1,16 @@
+{
+  "name": "avenza-store",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "latest",
+    "vite": "latest",
+    "react": "latest",
+    "react-dom": "latest"
+  }
+}

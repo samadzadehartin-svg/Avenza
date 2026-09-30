@@ -1,0 +1,14 @@
+*{box-sizing:border-box;font-family:tahoma}
+body{margin:0;background:#fff8f2;color:#332821}
+header{background:white;padding:25px 8%;display:flex;justify-content:space-between}
+.logo{font-size:38px;color:#b58a45;font-weight:bold}
+.hero{text-align:center;padding:90px 20px;background:#f7ddd5}
+.hero h1{font-size:55px;color:#b58a45}
+button{padding:14px 35px;border:0;border-radius:30px;background:#db8997;color:white;margin:5px}
+.gold{background:#b58a45}
+.grid{display:flex;gap:20px;padding:30px 8%}
+.card{background:white;padding:25px;border-radius:25px;flex:1}
+.image{height:250px;background:#eee0d8;border-radius:20px;display:flex;align-items:center;justify-content:center}
+.wholesale{margin:40px 8%;background:#f3d2ca;padding:40px;border-radius:30px}
+footer{background:#211b17;color:white;text-align:center;padding:40px}
+@media(max-width:700px){.grid{flex-direction:column}}
