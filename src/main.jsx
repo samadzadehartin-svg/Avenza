@@ -1,11 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
-import Admin from './Admin.jsx'
-import './style.css'
-import './overrides.css'
-import './product-toggle.css'
-import './product-toggle.js'
+import App from './AppBoutique.jsx'
+import Admin from './AdminBoutique.jsx'
+import './boutique.css'
 
 const isAdmin = /^\/admin\/?$/.test(window.location.pathname)
 if (isAdmin) {
@@ -14,7 +11,5 @@ if (isAdmin) {
 }
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    {isAdmin ? <Admin /> : <App />}
-  </React.StrictMode>,
+  <React.StrictMode>{isAdmin ? <Admin /> : <App />}</React.StrictMode>,
 )
