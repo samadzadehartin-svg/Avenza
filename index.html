@@ -5,8 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#111111" />
     <meta name="description" content="AVENZA Collection — فروش تکی و عمده پوشاک در تهران" />
+    <link rel="icon" href="/avenza-logo.webp" />
     <title>AVENZA Collection</title>
     <style>
+      .site-header .text-btn{display:none!important}
       .avenza-contact-static{background:#fff;color:#111;border-top:1px solid #e8e8e8;padding:52px max(28px,calc((100vw - 1320px)/2));font-family:"IRANSansX","IRANSans","IranSans",Vazirmatn,Tahoma,Arial,sans-serif}
       .avenza-contact-static__inner{display:grid;grid-template-columns:.8fr 1.2fr;gap:64px;align-items:start}
       .avenza-contact-static__title{margin:0;font-size:clamp(28px,4vw,48px);font-weight:900;letter-spacing:-1px}
@@ -16,8 +18,34 @@
       .avenza-contact-static__item strong{min-width:92px;font-size:13px}
       .avenza-contact-static__item a,.avenza-contact-static__item span{color:#444;line-height:1.9;font-size:14px;text-decoration:none}
       .avenza-contact-static__item a:hover{color:#000;text-decoration:underline}
+      .admin-route .avenza-contact-static{display:none!important}
       @media(max-width:720px){.avenza-contact-static{padding:42px 20px}.avenza-contact-static__inner{grid-template-columns:1fr;gap:26px}.avenza-contact-static__item{display:block}.avenza-contact-static__item strong{display:block;margin-bottom:6px}}
     </style>
+    <script>
+      (function(){
+        var isAdmin=/^\/admin\/?$/.test(window.location.pathname);
+        if(!isAdmin) return;
+        if(window.location.pathname==='/admin') window.history.replaceState(null,'','/admin/');
+        document.documentElement.classList.add('admin-route');
+        document.title='مدیریت | AVENZA Collection';
+        window.addEventListener('DOMContentLoaded',function(){
+          function openAdmin(){
+            var buttons=Array.from(document.querySelectorAll('button'));
+            var button=buttons.find(function(el){return el.textContent.trim()==='مدیریت'});
+            if(button){button.click();return true}
+            return false;
+          }
+          if(!openAdmin()){
+            var observer=new MutationObserver(function(){if(openAdmin()) observer.disconnect()});
+            observer.observe(document.body,{childList:true,subtree:true});
+          }
+          document.addEventListener('click',function(event){
+            var target=event.target.closest&&event.target.closest('.admin-top .icon-btn');
+            if(target){event.preventDefault();event.stopImmediatePropagation();window.location.href='/'}
+          },true);
+        });
+      })();
+    </script>
     <script type="application/ld+json">
       {
         "@context":"https://schema.org",
@@ -28,7 +56,7 @@
         "address":{
           "@type":"PostalAddress",
           "addressLocality":"تهران",
-          "streetAddress":"فردوسی، نبش جمهوری، پاساژ کویتی‌های استانبول، واحد ۱۰۱پ",
+          "streetAddress":"فردوسی، نبش جمهوری، پاساژ کویتی‌های استانبول، واحد ۱۰۱",
           "addressCountry":"IR"
         }
       }
@@ -46,7 +74,7 @@
           <div class="avenza-contact-static__item"><strong>اینستاگرام</strong><a href="https://www.instagram.com/Avenza_co/" target="_blank" rel="noreferrer">@Avenza_co</a></div>
           <div class="avenza-contact-static__item"><strong>تماس</strong><a href="tel:09108456261" dir="ltr">09108456261</a></div>
           <div class="avenza-contact-static__item"><strong>واتساپ</strong><a href="https://wa.me/989108456261" target="_blank" rel="noreferrer" dir="ltr">09108456261</a></div>
-          <div class="avenza-contact-static__item"><strong>آدرس</strong><span>تهران، فردوسی، نبش جمهوری، پاساژ کویتی‌های استانبول، واحد ۱۰۱پ</span></div>
+          <div class="avenza-contact-static__item"><strong>آدرس</strong><span>تهران، فردوسی، نبش جمهوری، پاساژ کویتی‌های استانبول، واحد ۱۰۱</span></div>
         </div>
       </div>
     </section>
