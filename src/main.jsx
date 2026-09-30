@@ -4,6 +4,8 @@ import App from './App.jsx'
 import Admin from './Admin.jsx'
 import './style.css'
 import './overrides.css'
+import './product-toggle.css'
+import './product-toggle.js'
 
 const isAdmin = /^\/admin\/?$/.test(window.location.pathname)
 if (isAdmin) {
