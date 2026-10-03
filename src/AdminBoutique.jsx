@@ -5,6 +5,29 @@ const money = (value = 0) => new Intl.NumberFormat('fa-IR').format(Number(value 
 const cleanList = (items) => [...new Set(items.map((v) => String(v || '').trim()).filter(Boolean))]
 const keyOf = (color, size) => `${color || '_'}::${size || '_'}`
 
+const DEFAULT_CONTENT = {
+  brand_text: 'AVENZA COLLECTION',
+  announcement_link_label: '@{instagram}', announcement_link_url: '',
+  nav_shop_label: 'فروشگاه', nav_shop_target: '#shop',
+  nav_categories_label: 'دسته‌بندی‌ها', nav_categories_target: '#categories',
+  nav_wholesale_label: 'عمده', nav_wholesale_target: '#wholesale', cart_label: 'سبد',
+  hero_primary_label: 'مشاهده کالکشن', hero_primary_target: '#shop',
+  hero_secondary_label: 'خرید عمده', hero_secondary_target: '#wholesale', hero_brand_label: 'AVENZA', hero_brand_subtitle: 'COLLECTION · 2026',
+  trust_1_title: 'ارسال به سراسر کشور', trust_1_text: 'هماهنگی قبل از ارسال', trust_2_title: 'خرید تکی و عمده', trust_2_text: 'دو حالت قیمت‌گذاری', trust_3_title: 'پشتیبانی واتساپ', trust_3_text: 'راهنمای انتخاب و سفارش', trust_4_title: 'سفارش مستقیم', trust_4_text: 'بدون واسطه',
+  arrivals_eyebrow: 'NEW ARRIVALS', arrivals_title: 'جدیدترین انتخاب‌ها', arrivals_cta_label: 'مشاهده همه ←', arrivals_cta_target: '#shop',
+  categories_eyebrow: 'SHOP BY CATEGORY', categories_title: 'انتخاب براساس دسته‌بندی', categories_item_cta: 'مشاهده محصولات',
+  shop_eyebrow: 'THE COLLECTION', shop_title: 'فروشگاه AVENZA', shop_retail_label: 'تکی', shop_wholesale_label: 'عمده', shop_all_label: 'همه', shop_loading_text: 'در حال بارگذاری...',
+  wholesale_eyebrow: 'WHOLESALE · AVENZA', wholesale_bullet_1: 'قیمت همکاری برای سفارش تعداد', wholesale_bullet_2: 'هماهنگی مستقیم با مجموعه', wholesale_bullet_3: 'مناسب فروشگاه‌ها و مزون‌ها', wholesale_name_placeholder: 'نام و نام خانوادگی', wholesale_shop_placeholder: 'نام فروشگاه / مزون', wholesale_phone_placeholder: 'شماره تماس', wholesale_count_placeholder: 'تعداد تقریبی', wholesale_submit_label: 'ثبت درخواست همکاری', wholesale_busy_text: 'در حال ثبت...', wholesale_success_text: 'درخواست شما ثبت شد.', wholesale_error_text: 'خطا در ثبت درخواست.',
+  editorial_eyebrow: 'FOLLOW THE LOOK', editorial_title: '@{instagram}', editorial_text: 'استایل‌ها، کالکشن‌های تازه و محصولات جدید AVENZA را در اینستاگرام دنبال کنید.', editorial_cta_label: 'مشاهده اینستاگرام', editorial_cta_url: '',
+  about_eyebrow: 'ABOUT AVENZA',
+  footer_brand: 'AVENZA COLLECTION', footer_instagram_label: 'اینستاگرام', footer_contact_label: 'تماس و واتساپ', footer_whatsapp_label: 'واتساپ', footer_address_label: 'آدرس',
+  mobile_home_label: 'خانه', mobile_products_label: 'محصولات', mobile_cart_label: 'سبد',
+  product_featured_badge: 'پرفروش', product_card_cta: 'مشاهده محصول', product_back_label: '← بازگشت به فروشگاه', product_fallback_description: 'انتخابی از کالکشن AVENZA با تمرکز روی فرم، راحتی و استایل روزمره.', product_color_label: 'رنگ', product_size_label: 'سایز', product_available_label: 'موجود', product_stock_prefix: 'موجودی', product_soldout_label: 'ناموجود', product_add_label: 'افزودن به سبد خرید', product_note_1_title: 'سفارش مستقیم', product_note_1_text: 'ثبت آنلاین و هماهنگی پرداخت', product_note_2_title: 'پشتیبانی واتساپ', product_note_2_text: 'پاسخ‌گویی برای انتخاب و سفارش', product_note_3_title: 'خرید عمده', product_note_3_text: 'قیمت عمده در حالت همکاری',
+  cart_title: 'سبد خرید', cart_empty_text: 'سبد خرید هنوز خالی است.', cart_total_label: 'جمع سفارش', cart_checkout_label: 'ادامه ثبت سفارش', cart_note: 'پرداخت آنلاین فعلاً فعال نیست؛ سفارش ثبت می‌شود و برای هماهنگی با شما تماس گرفته می‌شود.',
+  checkout_eyebrow: 'CHECKOUT', checkout_title: 'ثبت سفارش', checkout_name_label: 'نام و نام خانوادگی', checkout_phone_label: 'شماره تماس', checkout_address_label: 'آدرس', checkout_submit_label: 'ثبت نهایی سفارش', checkout_busy_label: 'در حال ثبت...', checkout_error_text: 'ثبت سفارش انجام نشد. اطلاعات را بررسی کنید.', checkout_success_prefix: 'سفارش شماره',
+  not_found_title: 'محصول پیدا نشد', not_found_cta: 'بازگشت به فروشگاه'
+}
+
 const DEFAULT_SITE = {
   id: 1,
   announcement: 'ارسال و هماهنگی سفارش مستقیم با AVENZA',
@@ -16,40 +39,15 @@ const DEFAULT_SITE = {
   about_text: 'تمرکز ما روی انتخاب‌هایی است که راحت پوشیده می‌شوند، خوب می‌نشینند و از مد زودگذر فاصله دارند.',
   wholesale_title: 'همکاری با فروشگاه‌ها و مزون‌ها',
   wholesale_text: 'برای دریافت قیمت عمده و هماهنگی سفارش تعداد، درخواست خود را ثبت کنید تا با شما تماس بگیریم.',
-  instagram: 'Avenza_co',
-  phone: '09108456261',
-  whatsapp: '09108456261',
-  address: 'تهران، فردوسی، نبش جمهوری، پاساژ کویتی‌های استانبول، واحد ۱۰۱'
+  instagram: 'Avenza_co', phone: '09108456261', whatsapp: '09108456261', address: 'تهران، فردوسی، نبش جمهوری، پاساژ کویتی‌های استانبول، واحد ۱۰۱', content: DEFAULT_CONTENT
 }
+const hydrateSite = (row) => ({ ...DEFAULT_SITE, ...(row || {}), content: { ...DEFAULT_CONTENT, ...(row?.content || {}) } })
 
 function AdminLogin({ onReady }) {
-  const [session, setSession] = useState(null)
-  const [isAdmin, setIsAdmin] = useState(false)
-  const [loading, setLoading] = useState(true)
-  const [email, setEmail] = useState('aila.20021n@gmail.com')
-  const [password, setPassword] = useState('')
-  const [message, setMessage] = useState('')
-
-  const inspect = async (currentSession) => {
-    setSession(currentSession)
-    if (!currentSession) { setIsAdmin(false); setLoading(false); return }
-    const { data } = await supabase.rpc('is_admin')
-    setIsAdmin(Boolean(data)); setLoading(false)
-    if (data) onReady?.()
-  }
-
-  useEffect(() => {
-    supabase.auth.getSession().then(({ data }) => inspect(data.session))
-    const { data: listener } = supabase.auth.onAuthStateChange((_event, currentSession) => inspect(currentSession))
-    return () => listener.subscription.unsubscribe()
-  }, [])
-
-  const login = async (e) => {
-    e.preventDefault(); setMessage('در حال ورود...')
-    const { error } = await supabase.auth.signInWithPassword({ email, password })
-    setMessage(error ? 'ایمیل یا رمز عبور صحیح نیست.' : '')
-  }
-
+  const [session, setSession] = useState(null), [isAdmin, setIsAdmin] = useState(false), [loading, setLoading] = useState(true), [email, setEmail] = useState('aila.20021n@gmail.com'), [password, setPassword] = useState(''), [message, setMessage] = useState('')
+  const inspect = async (currentSession) => { setSession(currentSession); if (!currentSession) { setIsAdmin(false); setLoading(false); return }; const { data } = await supabase.rpc('is_admin'); setIsAdmin(Boolean(data)); setLoading(false); if (data) onReady?.() }
+  useEffect(() => { supabase.auth.getSession().then(({ data }) => inspect(data.session)); const { data: listener } = supabase.auth.onAuthStateChange((_event, currentSession) => inspect(currentSession)); return () => listener.subscription.unsubscribe() }, [])
+  const login = async (e) => { e.preventDefault(); setMessage('در حال ورود...'); const { error } = await supabase.auth.signInWithPassword({ email, password }); setMessage(error ? 'ایمیل یا رمز عبور صحیح نیست.' : '') }
   if (loading) return <div className="admin-login-wrap"><div className="admin-loading">در حال بررسی دسترسی...</div></div>
   if (!session) return <div className="admin-login-wrap"><div className="admin-login-card"><img src="/avenza-logo-v3.webp" alt="AVENZA" /><span>AVENZA ADMIN</span><h1>ورود مدیریت</h1><form onSubmit={login}><label>ایمیل<input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required /></label><label>رمز عبور<input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required /></label><button className="primary full">ورود</button></form>{message && <p>{message}</p>}<a href="/">بازگشت به فروشگاه</a></div></div>
   if (!isAdmin) return <div className="admin-login-wrap"><div className="admin-login-card"><h2>این حساب دسترسی مدیریت ندارد.</h2><button className="primary" onClick={() => supabase.auth.signOut()}>خروج</button></div></div>
@@ -58,175 +56,41 @@ function AdminLogin({ onReady }) {
 
 function ProductBuilder({ onSaved }) {
   const [form, setForm] = useState({ name: '', category: '', description: '', single_price: '', wholesale_price: '', featured: false })
-  const [colors, setColors] = useState([{ name: '', files: [] }])
-  const [sizes, setSizes] = useState([''])
-  const [generalFiles, setGeneralFiles] = useState([])
-  const [trackStock, setTrackStock] = useState(false)
-  const [stock, setStock] = useState({})
-  const [busy, setBusy] = useState(false)
-  const [message, setMessage] = useState('')
-
-  const colorNames = useMemo(() => cleanList(colors.map((c) => c.name)), [colors])
-  const sizeNames = useMemo(() => cleanList(sizes), [sizes])
-  const combos = useMemo(() => {
-    const cs = colorNames.length ? colorNames : [null]
-    const ss = sizeNames.length ? sizeNames : [null]
-    return cs.flatMap((color) => ss.map((size) => ({ color, size })))
-  }, [colorNames, sizeNames])
-
-  const uploadFiles = async (productId, files, color, startOrder = 0) => {
-    const rows = []
-    let order = startOrder
-    for (const file of files) {
-      const safe = file.name.replace(/[^a-zA-Z0-9._-]+/g, '-')
-      const path = `${productId}/${Date.now()}-${Math.random().toString(36).slice(2)}-${safe}`
-      const uploaded = await supabase.storage.from('products').upload(path, file)
-      if (uploaded.error) throw uploaded.error
-      rows.push({ product_id: productId, color: color || null, image_url: supabase.storage.from('products').getPublicUrl(path).data.publicUrl, sort_order: order++ })
-    }
-    return rows
-  }
-
-  const submit = async (e) => {
-    e.preventDefault(); setBusy(true); setMessage('در حال ذخیره محصول...')
-    let productId = null
-    try {
-      const created = await supabase.from('products').insert({
-        name: form.name.trim(), slug: `product-${Date.now()}`, category: form.category.trim() || null,
-        description: form.description.trim() || null, single_price: Number(form.single_price || 0),
-        wholesale_price: form.wholesale_price ? Number(form.wholesale_price) : null,
-        image: null, stock: 0, active: true, featured: Boolean(form.featured)
-      }).select().single()
-      if (created.error) throw created.error
-      productId = created.data.id
-
-      const variantRows = combos.map(({ color, size }) => ({ product_id: productId, color, size, stock: trackStock ? Math.max(0, Number(stock[keyOf(color, size)] || 0)) : null, sku: `AV-${productId}-${Math.random().toString(36).slice(2, 8)}` }))
-      if (variantRows.length) {
-        const result = await supabase.from('product_variants').insert(variantRows)
-        if (result.error) throw result.error
-      }
-
-      let imageRows = await uploadFiles(productId, generalFiles, null, 0)
-      for (const colorRow of colors) {
-        if (!colorRow.name.trim() || !colorRow.files?.length) continue
-        imageRows = imageRows.concat(await uploadFiles(productId, colorRow.files, colorRow.name.trim(), imageRows.length))
-      }
-      if (imageRows.length) {
-        const result = await supabase.from('product_images').insert(imageRows)
-        if (result.error) throw result.error
-        await supabase.from('products').update({ image: imageRows[0].image_url }).eq('id', productId)
-      }
-      if (trackStock) await supabase.from('products').update({ stock: variantRows.reduce((sum, row) => sum + Number(row.stock || 0), 0) }).eq('id', productId)
-
-      setForm({ name: '', category: '', description: '', single_price: '', wholesale_price: '', featured: false })
-      setColors([{ name: '', files: [] }]); setSizes(['']); setGeneralFiles([]); setTrackStock(false); setStock({})
-      setMessage('محصول ذخیره شد.'); onSaved?.()
-    } catch (error) {
-      console.error(error); setMessage('ذخیره محصول کامل نشد.')
-      if (productId) await supabase.from('products').delete().eq('id', productId)
-    } finally { setBusy(false) }
-  }
-
-  return <form className="admin-builder" onSubmit={submit}>
-    <div className="admin-block-head"><div><span>PRODUCT BUILDER</span><h2>افزودن محصول</h2></div><label className="inline-check"><input type="checkbox" checked={form.featured} onChange={(e) => setForm({ ...form, featured: e.target.checked })} /> پرفروش / منتخب</label></div>
-    <div className="admin-form-grid"><label>نام محصول<input required value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} /></label><label>دسته‌بندی<input value={form.category} onChange={(e) => setForm({ ...form, category: e.target.value })} /></label><label>قیمت تکی<input required type="number" min="0" value={form.single_price} onChange={(e) => setForm({ ...form, single_price: e.target.value })} /></label><label>قیمت عمده<input type="number" min="0" value={form.wholesale_price} onChange={(e) => setForm({ ...form, wholesale_price: e.target.value })} /></label><label className="admin-wide">توضیحات<textarea rows="4" value={form.description} onChange={(e) => setForm({ ...form, description: e.target.value })} /></label><label className="admin-wide upload-box">عکس‌های عمومی محصول<input type="file" accept="image/*" multiple onChange={(e) => setGeneralFiles(Array.from(e.target.files || []))} /><small>{generalFiles.length} عکس انتخاب شده</small></label></div>
-
-    <section className="variant-section"><div className="variant-section-head"><div><span>COLORS</span><h3>رنگ‌ها و عکس هر رنگ</h3></div><button type="button" className="soft-btn" onClick={() => setColors((rows) => [...rows, { name: '', files: [] }])}>+ رنگ</button></div><div className="variant-rows">{colors.map((row, index) => <div className="variant-row" key={index}><input placeholder="مثلاً مشکی" value={row.name} onChange={(e) => setColors((rows) => rows.map((r, i) => i === index ? { ...r, name: e.target.value } : r))} /><label className="mini-upload">عکس‌های این رنگ<input type="file" accept="image/*" multiple onChange={(e) => setColors((rows) => rows.map((r, i) => i === index ? { ...r, files: Array.from(e.target.files || []) } : r))} /></label><span>{row.files.length} عکس</span><button type="button" className="remove-btn" disabled={colors.length === 1} onClick={() => setColors((rows) => rows.filter((_, i) => i !== index))}>حذف</button></div>)}</div></section>
-
-    <section className="variant-section"><div className="variant-section-head"><div><span>SIZES</span><h3>سایزها</h3></div><button type="button" className="soft-btn" onClick={() => setSizes((rows) => [...rows, ''])}>+ سایز</button></div><div className="size-editor">{sizes.map((size, index) => <div key={index}><input placeholder="M یا 38" value={size} onChange={(e) => setSizes((rows) => rows.map((v, i) => i === index ? e.target.value : v))} /><button type="button" disabled={sizes.length === 1} onClick={() => setSizes((rows) => rows.filter((_, i) => i !== index))}>×</button></div>)}</div></section>
-
-    <section className="variant-section"><div className="variant-section-head"><div><span>INVENTORY</span><h3>موجودی</h3></div><label className="inline-check"><input type="checkbox" checked={trackStock} onChange={(e) => setTrackStock(e.target.checked)} /> موجودی محدود</label></div>{!trackStock ? <div className="inventory-note">اختیاری است؛ اگر خاموش باشد محصول بدون محدودیت تعداد قابل سفارش است.</div> : <div className="inventory-grid">{combos.map(({ color, size }) => <label key={keyOf(color, size)}><span>{[color, size].filter(Boolean).join(' / ') || 'محصول'}</span><input type="number" min="0" value={stock[keyOf(color, size)] ?? ''} onChange={(e) => setStock({ ...stock, [keyOf(color, size)]: e.target.value })} /></label>)}</div>}</section>
-
-    {message && <div className="admin-message">{message}</div>}
-    <button className="primary admin-save" disabled={busy}>{busy ? 'در حال ذخیره...' : 'ذخیره کامل محصول'}</button>
-  </form>
+  const [colors, setColors] = useState([{ name: '', files: [] }]), [sizes, setSizes] = useState(['']), [generalFiles, setGeneralFiles] = useState([]), [trackStock, setTrackStock] = useState(false), [stock, setStock] = useState({}), [busy, setBusy] = useState(false), [message, setMessage] = useState('')
+  const colorNames = useMemo(() => cleanList(colors.map((c) => c.name)), [colors]), sizeNames = useMemo(() => cleanList(sizes), [sizes])
+  const combos = useMemo(() => { const cs = colorNames.length ? colorNames : [null], ss = sizeNames.length ? sizeNames : [null]; return cs.flatMap((color) => ss.map((size) => ({ color, size }))) }, [colorNames, sizeNames])
+  const uploadFiles = async (productId, files, color, startOrder = 0) => { const rows = []; let order = startOrder; for (const file of files) { const safe = file.name.replace(/[^a-zA-Z0-9._-]+/g, '-'), path = `${productId}/${Date.now()}-${Math.random().toString(36).slice(2)}-${safe}`; const uploaded = await supabase.storage.from('products').upload(path, file); if (uploaded.error) throw uploaded.error; rows.push({ product_id: productId, color: color || null, image_url: supabase.storage.from('products').getPublicUrl(path).data.publicUrl, sort_order: order++ }) } return rows }
+  const submit = async (e) => { e.preventDefault(); setBusy(true); setMessage('در حال ذخیره محصول...'); let productId = null; try { const created = await supabase.from('products').insert({ name: form.name.trim(), slug: `product-${Date.now()}`, category: form.category.trim() || null, description: form.description.trim() || null, single_price: Number(form.single_price || 0), wholesale_price: form.wholesale_price ? Number(form.wholesale_price) : null, image: null, stock: 0, active: true, featured: Boolean(form.featured) }).select().single(); if (created.error) throw created.error; productId = created.data.id; const variantRows = combos.map(({ color, size }) => ({ product_id: productId, color, size, stock: trackStock ? Math.max(0, Number(stock[keyOf(color, size)] || 0)) : null, sku: `AV-${productId}-${Math.random().toString(36).slice(2, 8)}` })); if (variantRows.length) { const result = await supabase.from('product_variants').insert(variantRows); if (result.error) throw result.error } let imageRows = await uploadFiles(productId, generalFiles, null, 0); for (const colorRow of colors) { if (!colorRow.name.trim() || !colorRow.files?.length) continue; imageRows = imageRows.concat(await uploadFiles(productId, colorRow.files, colorRow.name.trim(), imageRows.length)) } if (imageRows.length) { const result = await supabase.from('product_images').insert(imageRows); if (result.error) throw result.error; await supabase.from('products').update({ image: imageRows[0].image_url }).eq('id', productId) } if (trackStock) await supabase.from('products').update({ stock: variantRows.reduce((sum, row) => sum + Number(row.stock || 0), 0) }).eq('id', productId); setForm({ name: '', category: '', description: '', single_price: '', wholesale_price: '', featured: false }); setColors([{ name: '', files: [] }]); setSizes(['']); setGeneralFiles([]); setTrackStock(false); setStock({}); setMessage('محصول ذخیره شد.'); onSaved?.() } catch (error) { console.error(error); setMessage('ذخیره محصول کامل نشد.'); if (productId) await supabase.from('products').delete().eq('id', productId) } finally { setBusy(false) } }
+  return <form className="admin-builder" onSubmit={submit}><div className="admin-block-head"><div><span>PRODUCT BUILDER</span><h2>افزودن محصول</h2></div><label className="inline-check"><input type="checkbox" checked={form.featured} onChange={(e) => setForm({ ...form, featured: e.target.checked })} /> پرفروش / منتخب</label></div><div className="admin-form-grid"><label>نام محصول<input required value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} /></label><label>دسته‌بندی<input value={form.category} onChange={(e) => setForm({ ...form, category: e.target.value })} /></label><label>قیمت تکی<input required type="number" min="0" value={form.single_price} onChange={(e) => setForm({ ...form, single_price: e.target.value })} /></label><label>قیمت عمده<input type="number" min="0" value={form.wholesale_price} onChange={(e) => setForm({ ...form, wholesale_price: e.target.value })} /></label><label className="admin-wide">توضیحات<textarea rows="4" value={form.description} onChange={(e) => setForm({ ...form, description: e.target.value })} /></label><label className="admin-wide upload-box">عکس‌های عمومی محصول<input type="file" accept="image/*" multiple onChange={(e) => setGeneralFiles(Array.from(e.target.files || []))} /><small>{generalFiles.length} عکس انتخاب شده</small></label></div><section className="variant-section"><div className="variant-section-head"><div><span>COLORS</span><h3>رنگ‌ها و عکس هر رنگ</h3></div><button type="button" className="soft-btn" onClick={() => setColors((rows) => [...rows, { name: '', files: [] }])}>+ رنگ</button></div><div className="variant-rows">{colors.map((row, index) => <div className="variant-row" key={index}><input placeholder="مثلاً مشکی" value={row.name} onChange={(e) => setColors((rows) => rows.map((r, i) => i === index ? { ...r, name: e.target.value } : r))} /><label className="mini-upload">عکس‌های این رنگ<input type="file" accept="image/*" multiple onChange={(e) => setColors((rows) => rows.map((r, i) => i === index ? { ...r, files: Array.from(e.target.files || []) } : r))} /></label><span>{row.files.length} عکس</span><button type="button" className="remove-btn" disabled={colors.length === 1} onClick={() => setColors((rows) => rows.filter((_, i) => i !== index))}>حذف</button></div>)}</div></section><section className="variant-section"><div className="variant-section-head"><div><span>SIZES</span><h3>سایزها</h3></div><button type="button" className="soft-btn" onClick={() => setSizes((rows) => [...rows, ''])}>+ سایز</button></div><div className="size-editor">{sizes.map((size, index) => <div key={index}><input placeholder="M یا 38" value={size} onChange={(e) => setSizes((rows) => rows.map((v, i) => i === index ? e.target.value : v))} /><button type="button" disabled={sizes.length === 1} onClick={() => setSizes((rows) => rows.filter((_, i) => i !== index))}>×</button></div>)}</div></section><section className="variant-section"><div className="variant-section-head"><div><span>INVENTORY</span><h3>موجودی</h3></div><label className="inline-check"><input type="checkbox" checked={trackStock} onChange={(e) => setTrackStock(e.target.checked)} /> موجودی محدود</label></div>{!trackStock ? <div className="inventory-note">اختیاری است؛ اگر خاموش باشد محصول بدون محدودیت تعداد قابل سفارش است.</div> : <div className="inventory-grid">{combos.map(({ color, size }) => <label key={keyOf(color, size)}><span>{[color, size].filter(Boolean).join(' / ') || 'محصول'}</span><input type="number" min="0" value={stock[keyOf(color, size)] ?? ''} onChange={(e) => setStock({ ...stock, [keyOf(color, size)]: e.target.value })} /></label>)}</div>}</section>{message && <div className="admin-message">{message}</div>}<button className="primary admin-save" disabled={busy}>{busy ? 'در حال ذخیره...' : 'ذخیره کامل محصول'}</button></form>
 }
 
 function SiteEditor() {
-  const [form, setForm] = useState(DEFAULT_SITE)
-  const [heroFile, setHeroFile] = useState(null)
-  const [busy, setBusy] = useState(true)
-  const [message, setMessage] = useState('')
-
-  useEffect(() => {
-    supabase.from('site_settings').select('*').eq('id', 1).maybeSingle().then(({ data }) => {
-      if (data) setForm({ ...DEFAULT_SITE, ...data })
-      setBusy(false)
-    })
-  }, [])
-
-  const save = async (e) => {
-    e.preventDefault(); setBusy(true); setMessage('در حال ذخیره تغییرات سایت...')
-    try {
-      let heroImageUrl = form.hero_image_url || null
-      if (heroFile) {
-        const ext = heroFile.name.split('.').pop() || 'jpg'
-        const path = `site/hero-${Date.now()}.${ext}`
-        const uploaded = await supabase.storage.from('products').upload(path, heroFile, { upsert: false })
-        if (uploaded.error) throw uploaded.error
-        heroImageUrl = supabase.storage.from('products').getPublicUrl(path).data.publicUrl
-      }
-      const payload = { ...form, id: 1, hero_image_url: heroImageUrl, updated_at: new Date().toISOString() }
-      const { error } = await supabase.from('site_settings').upsert(payload, { onConflict: 'id' })
-      if (error) throw error
-      setForm(payload); setHeroFile(null); setMessage('تغییرات سایت ذخیره شد و روی فرانت اعمال می‌شود.')
-    } catch (error) { console.error(error); setMessage('ذخیره تغییرات انجام نشد.') }
-    finally { setBusy(false) }
-  }
-
-  return <form className="site-editor" onSubmit={save}>
-    <div className="admin-block-head"><div><span>SITE EDITOR</span><h2>ادیت سایت</h2></div><a className="preview-link" href="/" target="_blank" rel="noreferrer">مشاهده سایت ↗</a></div>
-    <div className="editor-layout"><div className="editor-fields">
-      <label>نوار بالای سایت<input value={form.announcement} onChange={(e) => setForm({ ...form, announcement: e.target.value })} /></label>
-      <div className="editor-grid"><label>متن کوچک Hero<input value={form.hero_eyebrow} onChange={(e) => setForm({ ...form, hero_eyebrow: e.target.value })} /></label><label>عنوان اصلی Hero<input value={form.hero_title} onChange={(e) => setForm({ ...form, hero_title: e.target.value })} /></label></div>
-      <label>توضیح Hero<textarea rows="3" value={form.hero_subtitle} onChange={(e) => setForm({ ...form, hero_subtitle: e.target.value })} /></label>
-      <label className="upload-box">عکس بزرگ صفحه اول<input type="file" accept="image/*" onChange={(e) => setHeroFile(e.target.files?.[0] || null)} /><small>بهتر است عکس عمودی فشن با کیفیت بالا باشد.</small></label>
-      <div className="editor-grid"><label>عنوان درباره ما<input value={form.about_title} onChange={(e) => setForm({ ...form, about_title: e.target.value })} /></label><label>عنوان عمده<input value={form.wholesale_title} onChange={(e) => setForm({ ...form, wholesale_title: e.target.value })} /></label></div>
-      <label>متن درباره ما<textarea rows="3" value={form.about_text} onChange={(e) => setForm({ ...form, about_text: e.target.value })} /></label>
-      <label>متن همکاری عمده<textarea rows="3" value={form.wholesale_text} onChange={(e) => setForm({ ...form, wholesale_text: e.target.value })} /></label>
-      <div className="editor-grid"><label>اینستاگرام<input value={form.instagram} onChange={(e) => setForm({ ...form, instagram: e.target.value })} /></label><label>تلفن<input value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })} /></label><label>واتساپ<input value={form.whatsapp} onChange={(e) => setForm({ ...form, whatsapp: e.target.value })} /></label></div>
-      <label>آدرس<textarea rows="2" value={form.address} onChange={(e) => setForm({ ...form, address: e.target.value })} /></label>
-      {message && <div className="admin-message">{message}</div>}
-      <button className="primary admin-save" disabled={busy}>{busy ? 'در حال ذخیره...' : 'ذخیره و انتشار تغییرات'}</button>
-    </div><aside className="editor-preview"><span>PREVIEW</span><div className="editor-preview-image">{form.hero_image_url ? <img src={form.hero_image_url} alt="Hero" /> : <img src="/avenza-logo-v3.webp" alt="AVENZA" />}</div><small>عکس Hero فعلی</small></aside></div>
-  </form>
+  const [form, setForm] = useState(DEFAULT_SITE), [heroFile, setHeroFile] = useState(null), [busy, setBusy] = useState(true), [message, setMessage] = useState('')
+  useEffect(() => { supabase.from('site_settings').select('*').eq('id', 1).maybeSingle().then(({ data }) => { if (data) setForm(hydrateSite(data)); setBusy(false) }) }, [])
+  const setContent = (key, value) => setForm((current) => ({ ...current, content: { ...DEFAULT_CONTENT, ...(current.content || {}), [key]: value } }))
+  const c = { ...DEFAULT_CONTENT, ...(form.content || {}) }
+  const save = async (e) => { e.preventDefault(); setBusy(true); setMessage('در حال ذخیره تغییرات سایت...'); try { let heroImageUrl = form.hero_image_url || null; if (heroFile) { const ext = heroFile.name.split('.').pop() || 'jpg', path = `site/hero-${Date.now()}.${ext}`; const uploaded = await supabase.storage.from('products').upload(path, heroFile, { upsert: false }); if (uploaded.error) throw uploaded.error; heroImageUrl = supabase.storage.from('products').getPublicUrl(path).data.publicUrl } const payload = { ...form, id: 1, hero_image_url: heroImageUrl, content: c, updated_at: new Date().toISOString() }; const { error } = await supabase.from('site_settings').upsert(payload, { onConflict: 'id' }); if (error) throw error; setForm(hydrateSite(payload)); setHeroFile(null); setMessage('تغییرات سایت ذخیره شد و روی فرانت اعمال می‌شود.') } catch (error) { console.error(error); setMessage('ذخیره تغییرات انجام نشد.') } finally { setBusy(false) } }
+  const text = (label, key) => <label>{label}<input value={c[key] ?? ''} onChange={(e) => setContent(key, e.target.value)} /></label>
+  const area = (label, key, rows = 3) => <label className="admin-wide">{label}<textarea rows={rows} value={c[key] ?? ''} onChange={(e) => setContent(key, e.target.value)} /></label>
+  return <form className="site-editor" onSubmit={save}><div className="admin-block-head"><div><span>SITE EDITOR · FULL CONTROL</span><h2>ادیت کامل سایت</h2></div><a className="preview-link" href="/" target="_blank" rel="noreferrer">مشاهده سایت ↗</a></div><div className="editor-layout"><div className="editor-fields">
+    <section className="variant-section"><div className="variant-section-head"><div><span>HEADER</span><h3>هدر، نوار بالا و منوها</h3></div></div><label>نوار بالای سایت<input value={form.announcement} onChange={(e) => setForm({ ...form, announcement: e.target.value })} /></label><div className="editor-grid">{text('متن برند هدر','brand_text')}{text('متن لینک نوار بالا','announcement_link_label')}{text('لینک نوار بالا','announcement_link_url')}</div><div className="editor-grid">{text('منو فروشگاه','nav_shop_label')}{text('مقصد فروشگاه','nav_shop_target')}{text('منو دسته‌بندی','nav_categories_label')}{text('مقصد دسته‌بندی','nav_categories_target')}{text('منو عمده','nav_wholesale_label')}{text('مقصد عمده','nav_wholesale_target')}{text('متن سبد','cart_label')}</div><small>برای مقصد CTA می‌توانی #shop، #categories، #wholesale، مسیر داخلی یا لینک کامل https://... بگذاری.</small></section>
+    <section className="variant-section"><div className="variant-section-head"><div><span>HERO</span><h3>بخش اول صفحه و CTAها</h3></div></div><div className="editor-grid"><label>متن کوچک Hero<input value={form.hero_eyebrow} onChange={(e) => setForm({ ...form, hero_eyebrow: e.target.value })} /></label><label>عنوان اصلی Hero<input value={form.hero_title} onChange={(e) => setForm({ ...form, hero_title: e.target.value })} /></label></div><label>توضیح Hero<textarea rows="3" value={form.hero_subtitle} onChange={(e) => setForm({ ...form, hero_subtitle: e.target.value })} /></label><label className="upload-box">عکس بزرگ صفحه اول<input type="file" accept="image/*" onChange={(e) => setHeroFile(e.target.files?.[0] || null)} /><small>در صورت انتخاب عکس جدید، بعد از ذخیره روی فرانت می‌آید.</small></label><div className="editor-grid">{text('CTA اول','hero_primary_label')}{text('مقصد CTA اول','hero_primary_target')}{text('CTA دوم','hero_secondary_label')}{text('مقصد CTA دوم','hero_secondary_target')}{text('برچسب روی Hero','hero_brand_label')}{text('زیرنویس برچسب Hero','hero_brand_subtitle')}</div></section>
+    <section className="variant-section"><div className="variant-section-head"><div><span>TRUST BAR</span><h3>چهار مزیت زیر Hero</h3></div></div><div className="editor-grid">{text('مزیت ۱ - عنوان','trust_1_title')}{text('مزیت ۱ - توضیح','trust_1_text')}{text('مزیت ۲ - عنوان','trust_2_title')}{text('مزیت ۲ - توضیح','trust_2_text')}{text('مزیت ۳ - عنوان','trust_3_title')}{text('مزیت ۳ - توضیح','trust_3_text')}{text('مزیت ۴ - عنوان','trust_4_title')}{text('مزیت ۴ - توضیح','trust_4_text')}</div></section>
+    <section className="variant-section"><div className="variant-section-head"><div><span>COLLECTION SECTIONS</span><h3>جدیدها، دسته‌بندی‌ها و فروشگاه</h3></div></div><div className="editor-grid">{text('جدیدها - متن کوچک','arrivals_eyebrow')}{text('جدیدها - عنوان','arrivals_title')}{text('جدیدها - CTA','arrivals_cta_label')}{text('جدیدها - مقصد CTA','arrivals_cta_target')}</div><div className="editor-grid">{text('دسته‌بندی - متن کوچک','categories_eyebrow')}{text('دسته‌بندی - عنوان','categories_title')}{text('CTA روی کارت دسته‌بندی','categories_item_cta')}</div><div className="editor-grid">{text('فروشگاه - متن کوچک','shop_eyebrow')}{text('فروشگاه - عنوان','shop_title')}{text('دکمه تکی','shop_retail_label')}{text('دکمه عمده','shop_wholesale_label')}{text('فیلتر همه','shop_all_label')}{text('متن لودینگ','shop_loading_text')}</div></section>
+    <section className="variant-section"><div className="variant-section-head"><div><span>WHOLESALE</span><h3>بخش عمده و فرم همکاری</h3></div></div><div className="editor-grid"><label>عنوان عمده<input value={form.wholesale_title} onChange={(e) => setForm({ ...form, wholesale_title: e.target.value })} /></label>{text('متن کوچک','wholesale_eyebrow')}</div><label>متن همکاری عمده<textarea rows="3" value={form.wholesale_text} onChange={(e) => setForm({ ...form, wholesale_text: e.target.value })} /></label><div className="editor-grid">{text('بولت ۱','wholesale_bullet_1')}{text('بولت ۲','wholesale_bullet_2')}{text('بولت ۳','wholesale_bullet_3')}</div><div className="editor-grid">{text('Placeholder نام','wholesale_name_placeholder')}{text('Placeholder فروشگاه','wholesale_shop_placeholder')}{text('Placeholder تماس','wholesale_phone_placeholder')}{text('Placeholder تعداد','wholesale_count_placeholder')}{text('CTA فرم عمده','wholesale_submit_label')}{text('متن در حال ثبت','wholesale_busy_text')}{text('پیام موفق','wholesale_success_text')}{text('پیام خطا','wholesale_error_text')}</div></section>
+    <section className="variant-section"><div className="variant-section-head"><div><span>EDITORIAL / INSTAGRAM</span><h3>اینستاگرام و Follow the look</h3></div></div><div className="editor-grid"><label>اینستاگرام<input value={form.instagram} onChange={(e) => setForm({ ...form, instagram: e.target.value })} /></label>{text('متن کوچک','editorial_eyebrow')}{text('عنوان','editorial_title')}</div>{area('متن بخش اینستاگرام','editorial_text')}<div className="editor-grid">{text('CTA اینستاگرام','editorial_cta_label')}{text('لینک CTA (خالی = اینستاگرام بالا)','editorial_cta_url')}</div><small>داخل عنوان یا لینک نوار بالا می‌توانی از {'{instagram}'} استفاده کنی.</small></section>
+    <section className="variant-section"><div className="variant-section-head"><div><span>ABOUT</span><h3>درباره AVENZA</h3></div></div><div className="editor-grid">{text('متن کوچک درباره ما','about_eyebrow')}<label>عنوان درباره ما<input value={form.about_title} onChange={(e) => setForm({ ...form, about_title: e.target.value })} /></label></div><label>متن درباره ما<textarea rows="3" value={form.about_text} onChange={(e) => setForm({ ...form, about_text: e.target.value })} /></label></section>
+    <section className="variant-section"><div className="variant-section-head"><div><span>PRODUCT PAGE</span><h3>کارت و صفحه محصول</h3></div></div><div className="editor-grid">{text('Badge محصول منتخب','product_featured_badge')}{text('CTA کارت محصول','product_card_cta')}{text('دکمه بازگشت','product_back_label')}{text('برچسب رنگ','product_color_label')}{text('برچسب سایز','product_size_label')}{text('متن موجود','product_available_label')}{text('پیشوند موجودی','product_stock_prefix')}{text('متن ناموجود','product_soldout_label')}{text('CTA افزودن به سبد','product_add_label')}</div>{area('توضیح پیش‌فرض محصول','product_fallback_description')}<div className="editor-grid">{text('نکته ۱ - عنوان','product_note_1_title')}{text('نکته ۱ - متن','product_note_1_text')}{text('نکته ۲ - عنوان','product_note_2_title')}{text('نکته ۲ - متن','product_note_2_text')}{text('نکته ۳ - عنوان','product_note_3_title')}{text('نکته ۳ - متن','product_note_3_text')}</div></section>
+    <section className="variant-section"><div className="variant-section-head"><div><span>CART / CHECKOUT</span><h3>سبد خرید و ثبت سفارش</h3></div></div><div className="editor-grid">{text('عنوان سبد','cart_title')}{text('سبد خالی','cart_empty_text')}{text('جمع سفارش','cart_total_label')}{text('CTA ادامه سفارش','cart_checkout_label')}</div>{area('توضیح پایین سبد','cart_note')}<div className="editor-grid">{text('Checkout - متن کوچک','checkout_eyebrow')}{text('Checkout - عنوان','checkout_title')}{text('فیلد نام','checkout_name_label')}{text('فیلد تماس','checkout_phone_label')}{text('فیلد آدرس','checkout_address_label')}{text('CTA نهایی سفارش','checkout_submit_label')}{text('متن در حال ثبت','checkout_busy_label')}{text('شروع پیام موفق','checkout_success_prefix')}</div>{area('پیام خطای سفارش','checkout_error_text',2)}<div className="editor-grid">{text('عنوان محصول پیدا نشد','not_found_title')}{text('CTA برگشت','not_found_cta')}</div></section>
+    <section className="variant-section"><div className="variant-section-head"><div><span>FOOTER / MOBILE</span><h3>فوتر و منوی موبایل</h3></div></div><div className="editor-grid">{text('برند فوتر','footer_brand')}{text('عنوان اینستاگرام','footer_instagram_label')}{text('عنوان تماس','footer_contact_label')}{text('متن واتساپ','footer_whatsapp_label')}{text('عنوان آدرس','footer_address_label')}{text('موبایل - خانه','mobile_home_label')}{text('موبایل - محصولات','mobile_products_label')}{text('موبایل - سبد','mobile_cart_label')}</div></section>
+    <section className="variant-section"><div className="variant-section-head"><div><span>CONTACT</span><h3>اطلاعات تماس</h3></div></div><div className="editor-grid"><label>تلفن<input value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })} /></label><label>واتساپ<input value={form.whatsapp} onChange={(e) => setForm({ ...form, whatsapp: e.target.value })} /></label></div><label>آدرس<textarea rows="2" value={form.address} onChange={(e) => setForm({ ...form, address: e.target.value })} /></label></section>
+    {message && <div className="admin-message">{message}</div>}<button className="primary admin-save" disabled={busy}>{busy ? 'در حال ذخیره...' : 'ذخیره و انتشار همه تغییرات'}</button></div><aside className="editor-preview"><span>PREVIEW</span><div className="editor-preview-image">{form.hero_image_url ? <img src={form.hero_image_url} alt="Hero" /> : <img src="/avenza-logo-v3.webp" alt="AVENZA" />}</div><small>عکس Hero فعلی</small><p>تمام متن‌ها و CTAهای اصلی سایت از این صفحه قابل ویرایش هستند.</p></aside></div></form>
 }
 
 export default function Admin() {
-  const [ready, setReady] = useState(false)
-  const [tab, setTab] = useState('products')
-  const [products, setProducts] = useState([])
-  const [orders, setOrders] = useState([])
-  const [requests, setRequests] = useState([])
-  const [loading, setLoading] = useState(false)
-
-  const refresh = async () => {
-    setLoading(true)
-    const [p, o, r] = await Promise.all([
-      supabase.from('products').select('*, product_variants(*), product_images(*)').order('created_at', { ascending: false }),
-      supabase.from('orders').select('*, order_items(*)').order('created_at', { ascending: false }),
-      supabase.from('wholesale_requests').select('*').order('created_at', { ascending: false })
-    ])
-    setProducts(p.data || []); setOrders(o.data || []); setRequests(r.data || []); setLoading(false)
-  }
+  const [ready, setReady] = useState(false), [tab, setTab] = useState('products'), [products, setProducts] = useState([]), [orders, setOrders] = useState([]), [requests, setRequests] = useState([]), [loading, setLoading] = useState(false)
+  const refresh = async () => { setLoading(true); const [p, o, r] = await Promise.all([supabase.from('products').select('*, product_variants(*), product_images(*)').order('created_at', { ascending: false }),supabase.from('orders').select('*, order_items(*)').order('created_at', { ascending: false }),supabase.from('wholesale_requests').select('*').order('created_at', { ascending: false })]); setProducts(p.data || []); setOrders(o.data || []); setRequests(r.data || []); setLoading(false) }
   useEffect(() => { if (ready) refresh() }, [ready])
-
-  const toggleProduct = async (product) => { await supabase.from('products').update({ active: !product.active }).eq('id', product.id); refresh() }
-  const setOrderStatus = async (id, status) => { await supabase.from('orders').update({ status, updated_at: new Date().toISOString() }).eq('id', id); refresh() }
-  const setRequestStatus = async (id, status) => { await supabase.from('wholesale_requests').update({ status }).eq('id', id); refresh() }
-
-  return <div className="admin-page">
-    <AdminLogin onReady={() => setReady(true)} />
-    {ready && <><header className="admin-header"><a className="admin-brand" href="/"><img src="/avenza-logo-v3.webp" alt="AVENZA" /><div><strong>AVENZA</strong><span>ADMIN PANEL</span></div></a><nav><button className={tab === 'products' ? 'active' : ''} onClick={() => setTab('products')}>محصولات</button><button className={tab === 'orders' ? 'active' : ''} onClick={() => setTab('orders')}>سفارش‌ها</button><button className={tab === 'wholesale' ? 'active' : ''} onClick={() => setTab('wholesale')}>عمده</button><button className={tab === 'site' ? 'active' : ''} onClick={() => setTab('site')}>ادیت سایت</button></nav><div className="admin-header-actions"><a href="/" target="_blank" rel="noreferrer">مشاهده سایت</a><button onClick={() => supabase.auth.signOut()}>خروج</button></div></header>
-
-    <main className="admin-content">
-      {tab === 'products' && <div className="admin-products-page"><ProductBuilder onSaved={refresh} /><section className="admin-catalog"><div className="admin-block-head"><div><span>CATALOG</span><h2>محصولات ثبت‌شده</h2></div><b>{products.length}</b></div>{loading ? <div className="admin-loading">در حال بارگذاری...</div> : <div className="admin-product-list">{products.map((product) => { const colors = cleanList((product.product_variants || []).map((v) => v.color)); const sizes = cleanList((product.product_variants || []).map((v) => v.size)); const tracked = (product.product_variants || []).some((v) => v.stock !== null); const total = (product.product_variants || []).reduce((sum, v) => sum + Number(v.stock || 0), 0); return <article className="admin-product-card" key={product.id}><div className="admin-product-thumb">{product.image ? <img src={product.image} alt="" /> : <span>AV</span>}</div><div className="admin-product-info"><strong>{product.name}</strong><small>{product.category || 'بدون دسته'} · {money(product.single_price)}</small><div className="variant-summary"><span>{colors.length ? colors.join('، ') : 'بدون رنگ'}</span><span>{sizes.length ? sizes.join('، ') : 'بدون سایز'}</span><span>{tracked ? `موجودی ${total}` : 'نامحدود'}</span><span>{product.product_images?.length || 0} عکس</span></div></div><button className={product.active ? 'status-live' : 'status-off'} onClick={() => toggleProduct(product)}>{product.active ? 'فعال' : 'غیرفعال'}</button></article> })}{!products.length && <div className="empty">هنوز محصولی ثبت نشده.</div>}</div>}</section></div>}
-
-      {tab === 'orders' && <section className="admin-table-section"><div className="admin-block-head"><div><span>ORDERS</span><h2>سفارش‌ها</h2></div><b>{orders.length}</b></div><div className="admin-order-list">{orders.map((order) => <article className="admin-order-card" key={order.id}><div><strong>#{order.id} · {order.name}</strong><small>{order.phone} · {order.order_type === 'wholesale' ? 'عمده' : 'تکی'} · {money(order.total)}</small><p>{order.address}</p>{order.order_items?.map((item) => <em key={item.id}>{item.product_name} {item.color || ''} {item.size || ''} × {item.quantity}</em>)}</div><select value={order.status} onChange={(e) => setOrderStatus(order.id, e.target.value)}><option>جدید</option><option>در حال بررسی</option><option>تایید شده</option><option>ارسال شده</option><option>لغو شده</option></select></article>)}{!orders.length && <div className="empty">سفارشی وجود ندارد.</div>}</div></section>}
-
-      {tab === 'wholesale' && <section className="admin-table-section"><div className="admin-block-head"><div><span>WHOLESALE</span><h2>درخواست‌های عمده</h2></div><b>{requests.length}</b></div><div className="admin-order-list">{requests.map((request) => <article className="admin-order-card" key={request.id}><div><strong>{request.name}{request.shop ? ` · ${request.shop}` : ''}</strong><small>{request.phone} · تعداد تقریبی {request.count || '—'}</small></div><select value={request.status} onChange={(e) => setRequestStatus(request.id, e.target.value)}><option>جدید</option><option>تماس گرفته شد</option><option>تایید شد</option><option>رد شد</option></select></article>)}{!requests.length && <div className="empty">درخواستی وجود ندارد.</div>}</div></section>}
-
-      {tab === 'site' && <SiteEditor />}
-    </main></>}
-  </div>
+  const toggleProduct = async (product) => { await supabase.from('products').update({ active: !product.active }).eq('id', product.id); refresh() }, setOrderStatus = async (id, status) => { await supabase.from('orders').update({ status, updated_at: new Date().toISOString() }).eq('id', id); refresh() }, setRequestStatus = async (id, status) => { await supabase.from('wholesale_requests').update({ status }).eq('id', id); refresh() }
+  return <div className="admin-page"><AdminLogin onReady={() => setReady(true)} />{ready && <><header className="admin-header"><a className="admin-brand" href="/"><img src="/avenza-logo-v3.webp" alt="AVENZA" /><div><strong>AVENZA</strong><span>ADMIN PANEL</span></div></a><nav><button className={tab === 'products' ? 'active' : ''} onClick={() => setTab('products')}>محصولات</button><button className={tab === 'orders' ? 'active' : ''} onClick={() => setTab('orders')}>سفارش‌ها</button><button className={tab === 'wholesale' ? 'active' : ''} onClick={() => setTab('wholesale')}>عمده</button><button className={tab === 'site' ? 'active' : ''} onClick={() => setTab('site')}>ادیت سایت</button></nav><div className="admin-header-actions"><a href="/" target="_blank" rel="noreferrer">مشاهده سایت</a><button onClick={() => supabase.auth.signOut()}>خروج</button></div></header><main className="admin-content">{tab === 'products' && <div className="admin-products-page"><ProductBuilder onSaved={refresh} /><section className="admin-catalog"><div className="admin-block-head"><div><span>CATALOG</span><h2>محصولات ثبت‌شده</h2></div><b>{products.length}</b></div>{loading ? <div className="admin-loading">در حال بارگذاری...</div> : <div className="admin-product-list">{products.map((product) => { const colors = cleanList((product.product_variants || []).map((v) => v.color)), sizes = cleanList((product.product_variants || []).map((v) => v.size)), tracked = (product.product_variants || []).some((v) => v.stock !== null), total = (product.product_variants || []).reduce((sum, v) => sum + Number(v.stock || 0), 0); return <article className="admin-product-card" key={product.id}><div className="admin-product-thumb">{product.image ? <img src={product.image} alt="" /> : <span>AV</span>}</div><div className="admin-product-info"><strong>{product.name}</strong><small>{product.category || 'بدون دسته'} · {money(product.single_price)}</small><div className="variant-summary"><span>{colors.length ? colors.join('، ') : 'بدون رنگ'}</span><span>{sizes.length ? sizes.join('، ') : 'بدون سایز'}</span><span>{tracked ? `موجودی ${total}` : 'نامحدود'}</span><span>{product.product_images?.length || 0} عکس</span></div></div><button className={product.active ? 'status-live' : 'status-off'} onClick={() => toggleProduct(product)}>{product.active ? 'فعال' : 'غیرفعال'}</button></article> })}{!products.length && <div className="empty">هنوز محصولی ثبت نشده.</div>}</div>}</section></div>}{tab === 'orders' && <section className="admin-table-section"><div className="admin-block-head"><div><span>ORDERS</span><h2>سفارش‌ها</h2></div><b>{orders.length}</b></div><div className="admin-order-list">{orders.map((order) => <article className="admin-order-card" key={order.id}><div><strong>#{order.id} · {order.name}</strong><small>{order.phone} · {order.order_type === 'wholesale' ? 'عمده' : 'تکی'} · {money(order.total)}</small><p>{order.address}</p>{order.order_items?.map((item) => <em key={item.id}>{item.product_name} {item.color || ''} {item.size || ''} × {item.quantity}</em>)}</div><select value={order.status} onChange={(e) => setOrderStatus(order.id, e.target.value)}><option>جدید</option><option>در حال بررسی</option><option>تایید شده</option><option>ارسال شده</option><option>لغو شده</option></select></article>)}{!orders.length && <div className="empty">سفارشی وجود ندارد.</div>}</div></section>}{tab === 'wholesale' && <section className="admin-table-section"><div className="admin-block-head"><div><span>WHOLESALE</span><h2>درخواست‌های عمده</h2></div><b>{requests.length}</b></div><div className="admin-order-list">{requests.map((request) => <article className="admin-order-card" key={request.id}><div><strong>{request.name}{request.shop ? ` · ${request.shop}` : ''}</strong><small>{request.phone} · تعداد تقریبی {request.count || '—'}</small></div><select value={request.status} onChange={(e) => setRequestStatus(request.id, e.target.value)}><option>جدید</option><option>تماس گرفته شد</option><option>تایید شد</option><option>رد شد</option></select></article>)}{!requests.length && <div className="empty">درخواستی وجود ندارد.</div>}</div></section>}{tab === 'site' && <SiteEditor />}</main></>}</div>
 }
