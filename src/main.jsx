@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client'
 import App from './StoreNext.jsx'
 import Admin from './AdminBoutique.jsx'
 import { OrderedStore, SectionOrderEditorPortal } from './SectionOrderManager.jsx'
+import { LogoApplicator, LogoEditorPortal } from './LogoManager.jsx'
 import './boutique.css'
 import './store-next.css'
 
@@ -14,6 +15,6 @@ if (isAdmin) {
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    {isAdmin ? <><Admin /><SectionOrderEditorPortal /></> : <OrderedStore><App /></OrderedStore>}
+    {isAdmin ? <><Admin /><SectionOrderEditorPortal /><LogoEditorPortal /></> : <OrderedStore><><App /><LogoApplicator /></></OrderedStore>}
   </React.StrictMode>,
 )
