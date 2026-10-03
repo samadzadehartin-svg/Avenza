@@ -10,6 +10,105 @@ const EDITORIAL = [
   'https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1000&q=85',
   'https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=1000&q=85'
 ]
+
+const DEFAULT_CONTENT = {
+  brand_text: 'AVENZA COLLECTION',
+  announcement_link_label: '@{instagram}',
+  announcement_link_url: '',
+  nav_shop_label: 'فروشگاه',
+  nav_shop_target: '#shop',
+  nav_categories_label: 'دسته‌بندی‌ها',
+  nav_categories_target: '#categories',
+  nav_wholesale_label: 'عمده',
+  nav_wholesale_target: '#wholesale',
+  cart_label: 'سبد',
+  hero_primary_label: 'مشاهده کالکشن',
+  hero_primary_target: '#shop',
+  hero_secondary_label: 'خرید عمده',
+  hero_secondary_target: '#wholesale',
+  hero_brand_label: 'AVENZA',
+  hero_brand_subtitle: 'COLLECTION · 2026',
+  trust_1_title: 'ارسال به سراسر کشور',
+  trust_1_text: 'هماهنگی قبل از ارسال',
+  trust_2_title: 'خرید تکی و عمده',
+  trust_2_text: 'دو حالت قیمت‌گذاری',
+  trust_3_title: 'پشتیبانی واتساپ',
+  trust_3_text: 'راهنمای انتخاب و سفارش',
+  trust_4_title: 'سفارش مستقیم',
+  trust_4_text: 'بدون واسطه',
+  arrivals_eyebrow: 'NEW ARRIVALS',
+  arrivals_title: 'جدیدترین انتخاب‌ها',
+  arrivals_cta_label: 'مشاهده همه ←',
+  arrivals_cta_target: '#shop',
+  categories_eyebrow: 'SHOP BY CATEGORY',
+  categories_title: 'انتخاب براساس دسته‌بندی',
+  categories_item_cta: 'مشاهده محصولات',
+  shop_eyebrow: 'THE COLLECTION',
+  shop_title: 'فروشگاه AVENZA',
+  shop_retail_label: 'تکی',
+  shop_wholesale_label: 'عمده',
+  shop_all_label: 'همه',
+  shop_loading_text: 'در حال بارگذاری...',
+  wholesale_eyebrow: 'WHOLESALE · AVENZA',
+  wholesale_bullet_1: 'قیمت همکاری برای سفارش تعداد',
+  wholesale_bullet_2: 'هماهنگی مستقیم با مجموعه',
+  wholesale_bullet_3: 'مناسب فروشگاه‌ها و مزون‌ها',
+  wholesale_name_placeholder: 'نام و نام خانوادگی',
+  wholesale_shop_placeholder: 'نام فروشگاه / مزون',
+  wholesale_phone_placeholder: 'شماره تماس',
+  wholesale_count_placeholder: 'تعداد تقریبی',
+  wholesale_submit_label: 'ثبت درخواست همکاری',
+  wholesale_busy_text: 'در حال ثبت...',
+  wholesale_success_text: 'درخواست شما ثبت شد.',
+  wholesale_error_text: 'خطا در ثبت درخواست.',
+  editorial_eyebrow: 'FOLLOW THE LOOK',
+  editorial_title: '@{instagram}',
+  editorial_text: 'استایل‌ها، کالکشن‌های تازه و محصولات جدید AVENZA را در اینستاگرام دنبال کنید.',
+  editorial_cta_label: 'مشاهده اینستاگرام',
+  editorial_cta_url: '',
+  about_eyebrow: 'ABOUT AVENZA',
+  footer_brand: 'AVENZA COLLECTION',
+  footer_instagram_label: 'اینستاگرام',
+  footer_contact_label: 'تماس و واتساپ',
+  footer_whatsapp_label: 'واتساپ',
+  footer_address_label: 'آدرس',
+  mobile_home_label: 'خانه',
+  mobile_products_label: 'محصولات',
+  mobile_cart_label: 'سبد',
+  product_featured_badge: 'پرفروش',
+  product_card_cta: 'مشاهده محصول',
+  product_back_label: '← بازگشت به فروشگاه',
+  product_fallback_description: 'انتخابی از کالکشن AVENZA با تمرکز روی فرم، راحتی و استایل روزمره.',
+  product_color_label: 'رنگ',
+  product_size_label: 'سایز',
+  product_available_label: 'موجود',
+  product_stock_prefix: 'موجودی',
+  product_soldout_label: 'ناموجود',
+  product_add_label: 'افزودن به سبد خرید',
+  product_note_1_title: 'سفارش مستقیم',
+  product_note_1_text: 'ثبت آنلاین و هماهنگی پرداخت',
+  product_note_2_title: 'پشتیبانی واتساپ',
+  product_note_2_text: 'پاسخ‌گویی برای انتخاب و سفارش',
+  product_note_3_title: 'خرید عمده',
+  product_note_3_text: 'قیمت عمده در حالت همکاری',
+  cart_title: 'سبد خرید',
+  cart_empty_text: 'سبد خرید هنوز خالی است.',
+  cart_total_label: 'جمع سفارش',
+  cart_checkout_label: 'ادامه ثبت سفارش',
+  cart_note: 'پرداخت آنلاین فعلاً فعال نیست؛ سفارش ثبت می‌شود و برای هماهنگی با شما تماس گرفته می‌شود.',
+  checkout_eyebrow: 'CHECKOUT',
+  checkout_title: 'ثبت سفارش',
+  checkout_name_label: 'نام و نام خانوادگی',
+  checkout_phone_label: 'شماره تماس',
+  checkout_address_label: 'آدرس',
+  checkout_submit_label: 'ثبت نهایی سفارش',
+  checkout_busy_label: 'در حال ثبت...',
+  checkout_error_text: 'ثبت سفارش انجام نشد. اطلاعات را بررسی کنید.',
+  checkout_success_prefix: 'سفارش شماره',
+  not_found_title: 'محصول پیدا نشد',
+  not_found_cta: 'بازگشت به فروشگاه'
+}
+
 const DEFAULT_SITE = {
   announcement: 'ارسال و هماهنگی سفارش مستقیم با AVENZA',
   hero_eyebrow: 'NEW COLLECTION · AVENZA',
@@ -23,8 +122,12 @@ const DEFAULT_SITE = {
   instagram: 'Avenza_co',
   phone: '09108456261',
   whatsapp: '09108456261',
-  address: 'تهران، فردوسی، نبش جمهوری، پاساژ کویتی‌های استانبول، واحد ۱۰۱'
+  address: 'تهران، فردوسی، نبش جمهوری، پاساژ کویتی‌های استانبول، واحد ۱۰۱',
+  content: DEFAULT_CONTENT
 }
+
+const hydrateSite = (row) => ({ ...DEFAULT_SITE, ...(row || {}), content: { ...DEFAULT_CONTENT, ...(row?.content || {}) } })
+const renderToken = (value, vars = {}) => String(value || '').replace(/\{(\w+)\}/g, (_, key) => vars[key] ?? '')
 
 const colorHex = (name = '') => {
   const n = String(name).trim()
@@ -47,39 +150,29 @@ function ProductImage({ product, className = '' }) {
   return src ? <img className={className} src={src} alt={product.name} loading="lazy" /> : <div className={`nx-fallback ${className}`}><b>AV</b><span>{product.name}</span></div>
 }
 
-function ProductCard({ product, mode, onOpen }) {
+function ProductCard({ product, mode, onOpen, content }) {
   const colors = unique((product.product_variants || []).map(v => v.color))
   const price = mode === 'wholesale' ? (product.wholesale_price ?? product.single_price) : product.single_price
   return <article className="nx-card">
     <button className="nx-card-media" type="button" onClick={() => onOpen(product)}>
       <ProductImage product={product} />
-      {product.featured && <span className="nx-badge">پرفروش</span>}
-      <span className="nx-card-view">مشاهده محصول</span>
+      {product.featured && <span className="nx-badge">{content.product_featured_badge}</span>}
+      <span className="nx-card-view">{content.product_card_cta}</span>
     </button>
-    <div className="nx-card-info">
-      <div><small>{product.category || 'AVENZA'}</small><h3>{product.name}</h3></div>
-      <strong>{money(price)}</strong>
-    </div>
+    <div className="nx-card-info"><div><small>{product.category || 'AVENZA'}</small><h3>{product.name}</h3></div><strong>{money(price)}</strong></div>
     {!!colors.length && <div className="nx-swatches" aria-label="رنگ‌های موجود">{colors.slice(0, 6).map(color => <span key={color} title={color} style={{ background: colorHex(color) }} />)}</div>}
   </article>
 }
 
-function CartDrawer({ open, cart, mode, onClose, onQty, onCheckout }) {
+function CartDrawer({ open, cart, mode, onClose, onQty, onCheckout, content }) {
   const total = cart.reduce((sum, item) => sum + item.quantity * (mode === 'wholesale' ? (item.product.wholesale_price ?? item.product.single_price) : item.product.single_price), 0)
   return <div className={`nx-drawer-shell ${open ? 'open' : ''}`}>
     <button className="nx-backdrop" onClick={onClose} aria-label="بستن سبد" />
-    <aside className="nx-drawer">
-      <div className="nx-drawer-head"><div><small>AVENZA</small><h3>سبد خرید</h3></div><button onClick={onClose}>×</button></div>
-      <div className="nx-cart-items">
-        {!cart.length && <div className="nx-empty">سبد خرید هنوز خالی است.</div>}
-        {cart.map(item => <div className="nx-cart-row" key={item.key}><div><b>{item.product.name}</b><small>{[item.variant?.color,item.variant?.size].filter(Boolean).join(' / ')}</small></div><div className="nx-qty"><button onClick={() => onQty(item.key,-1)}>−</button><span>{item.quantity}</span><button onClick={() => onQty(item.key,1)}>+</button></div></div>)}
-      </div>
-      <div className="nx-cart-foot"><div><span>جمع سفارش</span><b>{money(total)}</b></div><button className="nx-primary" disabled={!cart.length} onClick={onCheckout}>ادامه ثبت سفارش</button><p>پرداخت آنلاین فعلاً فعال نیست؛ سفارش ثبت می‌شود و برای هماهنگی با شما تماس گرفته می‌شود.</p></div>
-    </aside>
+    <aside className="nx-drawer"><div className="nx-drawer-head"><div><small>AVENZA</small><h3>{content.cart_title}</h3></div><button onClick={onClose}>×</button></div><div className="nx-cart-items">{!cart.length && <div className="nx-empty">{content.cart_empty_text}</div>}{cart.map(item => <div className="nx-cart-row" key={item.key}><div><b>{item.product.name}</b><small>{[item.variant?.color,item.variant?.size].filter(Boolean).join(' / ')}</small></div><div className="nx-qty"><button onClick={() => onQty(item.key,-1)}>−</button><span>{item.quantity}</span><button onClick={() => onQty(item.key,1)}>+</button></div></div>)}</div><div className="nx-cart-foot"><div><span>{content.cart_total_label}</span><b>{money(total)}</b></div><button className="nx-primary" disabled={!cart.length} onClick={onCheckout}>{content.cart_checkout_label}</button><p>{content.cart_note}</p></div></aside>
   </div>
 }
 
-function Checkout({ open, cart, mode, onClose, onDone }) {
+function Checkout({ open, cart, mode, onClose, onDone, content }) {
   const [form,setForm] = useState({ name:'', phone:'', address:'' })
   const [busy,setBusy] = useState(false)
   const [message,setMessage] = useState('')
@@ -88,14 +181,14 @@ function Checkout({ open, cart, mode, onClose, onDone }) {
     e.preventDefault(); setBusy(true); setMessage('')
     const items = cart.map(item => ({ product_id:item.product.id, variant_id:item.variant?.id || null, quantity:item.quantity }))
     const { data,error } = await supabase.rpc('place_order',{ p_name:form.name,p_phone:form.phone,p_address:form.address,p_order_type:mode,p_items:items })
-    if (error) setMessage('ثبت سفارش انجام نشد. اطلاعات را بررسی کنید.')
-    else { setMessage(`سفارش شماره ${data} ثبت شد.`); setTimeout(onDone,850) }
+    if (error) setMessage(content.checkout_error_text)
+    else { setMessage(`${content.checkout_success_prefix} ${data} ثبت شد.`); setTimeout(onDone,850) }
     setBusy(false)
   }
-  return <div className="nx-modal-shell"><form className="nx-checkout" onSubmit={submit}><div className="nx-drawer-head"><div><small>CHECKOUT</small><h3>ثبت سفارش</h3></div><button type="button" onClick={onClose}>×</button></div><label>نام و نام خانوادگی<input required value={form.name} onChange={e=>setForm({...form,name:e.target.value})} /></label><label>شماره تماس<input required inputMode="tel" value={form.phone} onChange={e=>setForm({...form,phone:e.target.value})} /></label><label>آدرس<textarea required rows="4" value={form.address} onChange={e=>setForm({...form,address:e.target.value})} /></label>{message && <div className="nx-message">{message}</div>}<button className="nx-primary" disabled={busy}>{busy?'در حال ثبت...':'ثبت نهایی سفارش'}</button></form></div>
+  return <div className="nx-modal-shell"><form className="nx-checkout" onSubmit={submit}><div className="nx-drawer-head"><div><small>{content.checkout_eyebrow}</small><h3>{content.checkout_title}</h3></div><button type="button" onClick={onClose}>×</button></div><label>{content.checkout_name_label}<input required value={form.name} onChange={e=>setForm({...form,name:e.target.value})} /></label><label>{content.checkout_phone_label}<input required inputMode="tel" value={form.phone} onChange={e=>setForm({...form,phone:e.target.value})} /></label><label>{content.checkout_address_label}<textarea required rows="4" value={form.address} onChange={e=>setForm({...form,address:e.target.value})} /></label>{message && <div className="nx-message">{message}</div>}<button className="nx-primary" disabled={busy}>{busy?content.checkout_busy_label:content.checkout_submit_label}</button></form></div>
 }
 
-function ProductPage({ product, mode, onAdd, onBack }) {
+function ProductPage({ product, mode, onAdd, onBack, content }) {
   const variants = product.product_variants || []
   const allImages = product.product_images || []
   const colors = unique(variants.map(v=>v.color))
@@ -112,39 +205,19 @@ function ProductPage({ product, mode, onAdd, onBack }) {
   useEffect(()=>{ setActive(gallery[0]?.image_url || product.image || '') },[color,product.id])
   const soldOut = selected?.stock === 0
   const price = mode === 'wholesale' ? (product.wholesale_price ?? product.single_price) : product.single_price
-
-  return <main className="nx-product-page">
-    <button className="nx-back" onClick={onBack}>← بازگشت به فروشگاه</button>
-    <div className="nx-product-layout">
-      <section className="nx-product-gallery">
-        <div className="nx-product-main">{active ? <img src={active} alt={product.name} /> : <ProductImage product={product} />}</div>
-        {gallery.length>1 && <div className="nx-product-thumbs">{gallery.map(img=><button key={img.id || img.image_url} className={active===img.image_url?'active':''} onClick={()=>setActive(img.image_url)}><img src={img.image_url} alt="" /></button>)}</div>}
-      </section>
-      <section className="nx-product-copy">
-        <small className="nx-kicker">{product.category || 'AVENZA COLLECTION'}</small>
-        <h1>{product.name}</h1>
-        <strong className="nx-product-price">{money(price)}</strong>
-        <p>{product.description || 'انتخابی از کالکشن AVENZA با تمرکز روی فرم، راحتی و استایل روزمره.'}</p>
-        {!!colors.length && <div className="nx-choice"><span>رنگ: <b>{color}</b></span><div className="nx-color-choices">{colors.map(item=><button key={item} className={color===item?'active':''} onClick={()=>setColor(item)}><i style={{background:colorHex(item)}} />{item}</button>)}</div></div>}
-        {!!sizes.length && <div className="nx-choice"><span>سایز</span><div className="nx-size-choices">{sizes.map(item=>{ const row=variants.find(v=>(!color||v.color===color)&&v.size===item); return <button key={item} disabled={row?.stock===0} className={size===item?'active':''} onClick={()=>setSize(item)}>{item}</button> })}</div></div>}
-        {variants.length>0 && <div className={`nx-stock ${soldOut?'off':''}`}>{selected?.stock == null ? 'موجود' : selected.stock>0 ? `موجودی ${selected.stock} عدد` : 'ناموجود'}</div>}
-        <button className="nx-primary nx-add-big" disabled={soldOut} onClick={()=>onAdd(product,selected)}>{soldOut?'ناموجود':'افزودن به سبد خرید'}</button>
-        <div className="nx-product-notes"><div><b>سفارش مستقیم</b><span>ثبت آنلاین و هماهنگی پرداخت</span></div><div><b>پشتیبانی واتساپ</b><span>پاسخ‌گویی برای انتخاب و سفارش</span></div><div><b>خرید عمده</b><span>قیمت عمده در حالت همکاری</span></div></div>
-      </section>
-    </div>
-  </main>
+  return <main className="nx-product-page"><button className="nx-back" onClick={onBack}>{content.product_back_label}</button><div className="nx-product-layout"><section className="nx-product-gallery"><div className="nx-product-main">{active ? <img src={active} alt={product.name} /> : <ProductImage product={product} />}</div>{gallery.length>1 && <div className="nx-product-thumbs">{gallery.map(img=><button key={img.id || img.image_url} className={active===img.image_url?'active':''} onClick={()=>setActive(img.image_url)}><img src={img.image_url} alt="" /></button>)}</div>}</section><section className="nx-product-copy"><small className="nx-kicker">{product.category || 'AVENZA COLLECTION'}</small><h1>{product.name}</h1><strong className="nx-product-price">{money(price)}</strong><p>{product.description || content.product_fallback_description}</p>{!!colors.length && <div className="nx-choice"><span>{content.product_color_label}: <b>{color}</b></span><div className="nx-color-choices">{colors.map(item=><button key={item} className={color===item?'active':''} onClick={()=>setColor(item)}><i style={{background:colorHex(item)}} />{item}</button>)}</div></div>}{!!sizes.length && <div className="nx-choice"><span>{content.product_size_label}</span><div className="nx-size-choices">{sizes.map(item=>{ const row=variants.find(v=>(!color||v.color===color)&&v.size===item); return <button key={item} disabled={row?.stock===0} className={size===item?'active':''} onClick={()=>setSize(item)}>{item}</button> })}</div></div>}{variants.length>0 && <div className={`nx-stock ${soldOut?'off':''}`}>{selected?.stock == null ? content.product_available_label : selected.stock>0 ? `${content.product_stock_prefix} ${selected.stock} عدد` : content.product_soldout_label}</div>}<button className="nx-primary nx-add-big" disabled={soldOut} onClick={()=>onAdd(product,selected)}>{soldOut?content.product_soldout_label:content.product_add_label}</button><div className="nx-product-notes"><div><b>{content.product_note_1_title}</b><span>{content.product_note_1_text}</span></div><div><b>{content.product_note_2_title}</b><span>{content.product_note_2_text}</span></div><div><b>{content.product_note_3_title}</b><span>{content.product_note_3_text}</span></div></div></section></div></main>
 }
 
-function WholesaleForm() {
+function WholesaleForm({ content }) {
   const [form,setForm] = useState({name:'',shop:'',phone:'',count:''})
   const [message,setMessage] = useState('')
   const submit = async e => {
-    e.preventDefault(); setMessage('در حال ثبت...')
+    e.preventDefault(); setMessage(content.wholesale_busy_text)
     const { error } = await supabase.from('wholesale_requests').insert({ name:form.name,shop:form.shop,phone:form.phone,count:Number(form.count||0)||null })
-    if(error) setMessage('خطا در ثبت درخواست.')
-    else { setMessage('درخواست شما ثبت شد.'); setForm({name:'',shop:'',phone:'',count:''}) }
+    if(error) setMessage(content.wholesale_error_text)
+    else { setMessage(content.wholesale_success_text); setForm({name:'',shop:'',phone:'',count:''}) }
   }
-  return <form className="nx-wholesale-form" onSubmit={submit}><input required placeholder="نام و نام خانوادگی" value={form.name} onChange={e=>setForm({...form,name:e.target.value})}/><input placeholder="نام فروشگاه / مزون" value={form.shop} onChange={e=>setForm({...form,shop:e.target.value})}/><input required placeholder="شماره تماس" value={form.phone} onChange={e=>setForm({...form,phone:e.target.value})}/><input type="number" min="1" placeholder="تعداد تقریبی" value={form.count} onChange={e=>setForm({...form,count:e.target.value})}/><button className="nx-light">ثبت درخواست همکاری</button>{message&&<span>{message}</span>}</form>
+  return <form className="nx-wholesale-form" onSubmit={submit}><input required placeholder={content.wholesale_name_placeholder} value={form.name} onChange={e=>setForm({...form,name:e.target.value})}/><input placeholder={content.wholesale_shop_placeholder} value={form.shop} onChange={e=>setForm({...form,shop:e.target.value})}/><input required placeholder={content.wholesale_phone_placeholder} value={form.phone} onChange={e=>setForm({...form,phone:e.target.value})}/><input type="number" min="1" placeholder={content.wholesale_count_placeholder} value={form.count} onChange={e=>setForm({...form,count:e.target.value})}/><button className="nx-light">{content.wholesale_submit_label}</button>{message&&<span>{message}</span>}</form>
 }
 
 export default function StoreNext() {
@@ -157,24 +230,13 @@ export default function StoreNext() {
   const [cartOpen,setCartOpen] = useState(false)
   const [checkoutOpen,setCheckoutOpen] = useState(false)
   const [route,setRoute] = useState(window.location.pathname)
-
-  useEffect(()=>{
-    const pop=()=>setRoute(window.location.pathname); window.addEventListener('popstate',pop); return ()=>window.removeEventListener('popstate',pop)
-  },[])
+  useEffect(()=>{ const pop=()=>setRoute(window.location.pathname); window.addEventListener('popstate',pop); return ()=>window.removeEventListener('popstate',pop) },[])
   useEffect(()=>{ localStorage.setItem('avenza-cart',JSON.stringify(cart)) },[cart])
-  useEffect(()=>{
-    Promise.all([
-      supabase.from('products').select('*, product_variants(*), product_images(*)').eq('active',true).order('featured',{ascending:false}).order('created_at',{ascending:false}),
-      supabase.from('site_settings').select('*').eq('id',1).maybeSingle()
-    ]).then(([p,s])=>{ setProducts(p.data||[]); if(s.data) setSite({...DEFAULT_SITE,...s.data}); setLoading(false) })
-  },[])
-
+  useEffect(()=>{ Promise.all([supabase.from('products').select('*, product_variants(*), product_images(*)').eq('active',true).order('featured',{ascending:false}).order('created_at',{ascending:false}),supabase.from('site_settings').select('*').eq('id',1).maybeSingle()]).then(([p,s])=>{ setProducts(p.data||[]); if(s.data) setSite(hydrateSite(s.data)); setLoading(false) }) },[])
+  const content = site.content || DEFAULT_CONTENT
   const openProduct = product => navigate(`/product/${product.id}`,setRoute)
-  const addToCart = (product,variant) => {
-    const key=`${product.id}-${variant?.id||'none'}`
-    setCart(items=>{ const existing=items.find(i=>i.key===key); if(existing){ const max=variant?.stock==null?Infinity:Number(variant.stock); return items.map(i=>i.key===key?{...i,quantity:Math.min(i.quantity+1,max)}:i) } return [...items,{key,product,variant,quantity:1}] })
-    setCartOpen(true)
-  }
+  const goTarget = (rawTarget) => { const target = String(rawTarget || '').trim(); if (!target) return; if (target.startsWith('#')) { if (route !== '/') navigate('/',setRoute); setTimeout(()=>document.querySelector(target)?.scrollIntoView({behavior:'smooth'}),60); return } if (target.startsWith('/')) { navigate(target,setRoute); return } window.open(target,'_blank','noopener,noreferrer') }
+  const addToCart = (product,variant) => { const key=`${product.id}-${variant?.id||'none'}`; setCart(items=>{ const existing=items.find(i=>i.key===key); if(existing){ const max=variant?.stock==null?Infinity:Number(variant.stock); return items.map(i=>i.key===key?{...i,quantity:Math.min(i.quantity+1,max)}:i) } return [...items,{key,product,variant,quantity:1}] }); setCartOpen(true) }
   const changeQty=(key,delta)=>setCart(items=>items.map(i=>{ if(i.key!==key)return i; const max=i.variant?.stock==null?Infinity:Number(i.variant.stock); return {...i,quantity:Math.min(max,Math.max(0,i.quantity+delta))} }).filter(i=>i.quantity>0))
   const cartCount=useMemo(()=>cart.reduce((sum,i)=>sum+i.quantity,0),[cart])
   const categories=unique(products.map(p=>p.category))
@@ -186,35 +248,9 @@ export default function StoreNext() {
   const instagram=String(site.instagram||'Avenza_co').replace(/^@/,'')
   const whatsapp=String(site.whatsapp||site.phone||'').replace(/\D/g,'').replace(/^0/,'98')
   const editorial = [...products.map(p=>p.image||p.product_images?.[0]?.image_url).filter(Boolean),...EDITORIAL].slice(0,4)
-
-  const header=<><div className="nx-announcement"><span>{site.announcement}</span><a target="_blank" rel="noreferrer" href={`https://instagram.com/${instagram}`}>@{instagram}</a></div><header className="nx-header"><button className="nx-brand" onClick={()=>navigate('/',setRoute)}><img src="/avenza-logo-v3.webp" alt="AVENZA"/><span>AVENZA COLLECTION</span></button><nav><button onClick={()=>{ if(route!=='/') navigate('/',setRoute); setTimeout(()=>document.getElementById('shop')?.scrollIntoView({behavior:'smooth'}),50)}}>فروشگاه</button><button onClick={()=>{ if(route!=='/') navigate('/',setRoute); setTimeout(()=>document.getElementById('categories')?.scrollIntoView({behavior:'smooth'}),50)}}>دسته‌بندی‌ها</button><button onClick={()=>{ if(route!=='/') navigate('/',setRoute); setTimeout(()=>document.getElementById('wholesale')?.scrollIntoView({behavior:'smooth'}),50)}}>عمده</button></nav><button className="nx-cart-button" onClick={()=>setCartOpen(true)}>سبد <b>{cartCount}</b></button></header></>
-
-  if(!loading && productMatch && !activeProduct) return <div className="avenza-store">{header}<div className="nx-not-found"><h1>محصول پیدا نشد</h1><button className="nx-primary" onClick={()=>navigate('/',setRoute)}>بازگشت به فروشگاه</button></div></div>
-
-  return <div className="avenza-store">
-    {header}
-    {activeProduct ? <ProductPage product={activeProduct} mode={mode} onAdd={addToCart} onBack={()=>navigate('/',setRoute)} /> : <>
-      <section className="nx-hero" style={{backgroundImage:`linear-gradient(90deg,rgba(0,0,0,.62),rgba(0,0,0,.08)),url('${site.hero_image_url||FALLBACK_HERO}')`}}><div className="nx-hero-copy"><small>{site.hero_eyebrow}</small><h1>{site.hero_title}</h1><p>{site.hero_subtitle}</p><div><button className="nx-primary invert" onClick={()=>document.getElementById('shop')?.scrollIntoView({behavior:'smooth'})}>مشاهده کالکشن</button><button className="nx-ghost-light" onClick={()=>document.getElementById('wholesale')?.scrollIntoView({behavior:'smooth'})}>خرید عمده</button></div></div><div className="nx-hero-label"><span>AVENZA</span><small>COLLECTION · 2026</small></div></section>
-
-      <section className="nx-trust"><div><b>ارسال به سراسر کشور</b><span>هماهنگی قبل از ارسال</span></div><div><b>خرید تکی و عمده</b><span>دو حالت قیمت‌گذاری</span></div><div><b>پشتیبانی واتساپ</b><span>راهنمای انتخاب و سفارش</span></div><div><b>سفارش مستقیم</b><span>بدون واسطه</span></div></section>
-
-      <section className="nx-section nx-arrivals"><div className="nx-section-title"><div><small>NEW ARRIVALS</small><h2>جدیدترین انتخاب‌ها</h2></div><button onClick={()=>document.getElementById('shop')?.scrollIntoView({behavior:'smooth'})}>مشاهده همه ←</button></div><div className="nx-grid">{arrivals.map(p=><ProductCard key={p.id} product={p} mode={mode} onOpen={openProduct}/>)}</div></section>
-
-      {!!categories.length && <section className="nx-section" id="categories"><div className="nx-section-title"><div><small>SHOP BY CATEGORY</small><h2>انتخاب براساس دسته‌بندی</h2></div></div><div className="nx-category-grid">{categories.slice(0,6).map((cat,index)=>{ const p=products.find(x=>x.category===cat); const img=p?.image||p?.product_images?.[0]?.image_url||EDITORIAL[index%EDITORIAL.length]; return <button key={cat} onClick={()=>{setCategory(cat);setTimeout(()=>document.getElementById('shop')?.scrollIntoView({behavior:'smooth'}),50)}} style={{backgroundImage:`linear-gradient(180deg,rgba(0,0,0,.05),rgba(0,0,0,.6)),url('${img}')`}}><span>{cat}</span><small>مشاهده محصولات</small></button>})}</div></section>}
-
-      <section className="nx-section" id="shop"><div className="nx-section-title nx-shop-head"><div><small>THE COLLECTION</small><h2>فروشگاه AVENZA</h2></div><div className="nx-mode"><button className={mode==='retail'?'active':''} onClick={()=>setMode('retail')}>تکی</button><button className={mode==='wholesale'?'active':''} onClick={()=>setMode('wholesale')}>عمده</button></div></div><div className="nx-filter-row"><button className={category==='all'?'active':''} onClick={()=>setCategory('all')}>همه</button>{categories.map(cat=><button key={cat} className={category===cat?'active':''} onClick={()=>setCategory(cat)}>{cat}</button>)}</div>{loading?<div className="nx-empty">در حال بارگذاری...</div>:<div className="nx-grid">{visible.map(p=><ProductCard key={p.id} product={p} mode={mode} onOpen={openProduct}/>)}</div>}</section>
-
-      <section className="nx-wholesale" id="wholesale"><div><small>WHOLESALE · AVENZA</small><h2>{site.wholesale_title}</h2><p>{site.wholesale_text}</p><ul><li>قیمت همکاری برای سفارش تعداد</li><li>هماهنگی مستقیم با مجموعه</li><li>مناسب فروشگاه‌ها و مزون‌ها</li></ul></div><WholesaleForm/></section>
-
-      <section className="nx-editorial"><div className="nx-editorial-copy"><small>FOLLOW THE LOOK</small><h2>@{instagram}</h2><p>استایل‌ها، کالکشن‌های تازه و محصولات جدید AVENZA را در اینستاگرام دنبال کنید.</p><a target="_blank" rel="noreferrer" href={`https://instagram.com/${instagram}`}>مشاهده اینستاگرام</a></div><div className="nx-editorial-grid">{editorial.map((img,i)=><a target="_blank" rel="noreferrer" href={`https://instagram.com/${instagram}`} key={`${img}-${i}`}><img src={img} alt="AVENZA style" loading="lazy"/></a>)}</div></section>
-
-      <section className="nx-about" id="about"><img src="/avenza-logo-v3.webp" alt="AVENZA"/><div><small>ABOUT AVENZA</small><h2>{site.about_title}</h2><p>{site.about_text}</p></div></section>
-
-      <footer className="nx-footer"><div><img src="/avenza-logo-v3.webp" alt="AVENZA"/><b>AVENZA COLLECTION</b></div><div><span>اینستاگرام</span><a target="_blank" rel="noreferrer" href={`https://instagram.com/${instagram}`}>@{instagram}</a></div><div><span>تماس و واتساپ</span><a href={`tel:${site.phone}`}>{site.phone}</a><a target="_blank" rel="noreferrer" href={`https://wa.me/${whatsapp}`}>واتساپ</a></div><div><span>آدرس</span><p>{site.address}</p></div></footer>
-    </>}
-
-    <nav className="nx-mobile-nav"><button onClick={()=>navigate('/',setRoute)}>خانه</button><button onClick={()=>{ if(route!=='/') navigate('/',setRoute); setTimeout(()=>document.getElementById('shop')?.scrollIntoView({behavior:'smooth'}),50)}}>محصولات</button><button onClick={()=>setCartOpen(true)}>سبد <b>{cartCount}</b></button></nav>
-    <CartDrawer open={cartOpen} cart={cart} mode={mode} onClose={()=>setCartOpen(false)} onQty={changeQty} onCheckout={()=>{setCartOpen(false);setCheckoutOpen(true)}}/>
-    <Checkout open={checkoutOpen} cart={cart} mode={mode} onClose={()=>setCheckoutOpen(false)} onDone={()=>{setCheckoutOpen(false);setCart([])}}/>
-  </div>
+  const instagramUrl = `https://instagram.com/${instagram}`
+  const vars = { instagram }
+  const header=<><div className="nx-announcement"><span>{site.announcement}</span><a target="_blank" rel="noreferrer" href={content.announcement_link_url || instagramUrl}>{renderToken(content.announcement_link_label,vars)}</a></div><header className="nx-header"><button className="nx-brand" onClick={()=>navigate('/',setRoute)}><img src="/avenza-logo-v3.webp" alt="AVENZA"/><span>{content.brand_text}</span></button><nav><button onClick={()=>goTarget(content.nav_shop_target)}>{content.nav_shop_label}</button><button onClick={()=>goTarget(content.nav_categories_target)}>{content.nav_categories_label}</button><button onClick={()=>goTarget(content.nav_wholesale_target)}>{content.nav_wholesale_label}</button></nav><button className="nx-cart-button" onClick={()=>setCartOpen(true)}>{content.cart_label} <b>{cartCount}</b></button></header></>
+  if(!loading && productMatch && !activeProduct) return <div className="avenza-store">{header}<div className="nx-not-found"><h1>{content.not_found_title}</h1><button className="nx-primary" onClick={()=>navigate('/',setRoute)}>{content.not_found_cta}</button></div></div>
+  return <div className="avenza-store">{header}{activeProduct ? <ProductPage product={activeProduct} mode={mode} onAdd={addToCart} onBack={()=>navigate('/',setRoute)} content={content} /> : <><section className="nx-hero" style={{backgroundImage:`linear-gradient(90deg,rgba(0,0,0,.62),rgba(0,0,0,.08)),url('${site.hero_image_url||FALLBACK_HERO}')`}}><div className="nx-hero-copy"><small>{site.hero_eyebrow}</small><h1>{site.hero_title}</h1><p>{site.hero_subtitle}</p><div><button className="nx-primary invert" onClick={()=>goTarget(content.hero_primary_target)}>{content.hero_primary_label}</button><button className="nx-ghost-light" onClick={()=>goTarget(content.hero_secondary_target)}>{content.hero_secondary_label}</button></div></div><div className="nx-hero-label"><span>{content.hero_brand_label}</span><small>{content.hero_brand_subtitle}</small></div></section><section className="nx-trust"><div><b>{content.trust_1_title}</b><span>{content.trust_1_text}</span></div><div><b>{content.trust_2_title}</b><span>{content.trust_2_text}</span></div><div><b>{content.trust_3_title}</b><span>{content.trust_3_text}</span></div><div><b>{content.trust_4_title}</b><span>{content.trust_4_text}</span></div></section><section className="nx-section nx-arrivals"><div className="nx-section-title"><div><small>{content.arrivals_eyebrow}</small><h2>{content.arrivals_title}</h2></div><button onClick={()=>goTarget(content.arrivals_cta_target)}>{content.arrivals_cta_label}</button></div><div className="nx-grid">{arrivals.map(p=><ProductCard key={p.id} product={p} mode={mode} onOpen={openProduct} content={content}/>)}</div></section>{!!categories.length && <section className="nx-section" id="categories"><div className="nx-section-title"><div><small>{content.categories_eyebrow}</small><h2>{content.categories_title}</h2></div></div><div className="nx-category-grid">{categories.slice(0,6).map((cat,index)=>{ const p=products.find(x=>x.category===cat); const img=p?.image||p?.product_images?.[0]?.image_url||EDITORIAL[index%EDITORIAL.length]; return <button key={cat} onClick={()=>{setCategory(cat);setTimeout(()=>document.getElementById('shop')?.scrollIntoView({behavior:'smooth'}),50)}} style={{backgroundImage:`linear-gradient(180deg,rgba(0,0,0,.05),rgba(0,0,0,.6)),url('${img}')`}}><span>{cat}</span><small>{content.categories_item_cta}</small></button>})}</div></section>}<section className="nx-section" id="shop"><div className="nx-section-title nx-shop-head"><div><small>{content.shop_eyebrow}</small><h2>{content.shop_title}</h2></div><div className="nx-mode"><button className={mode==='retail'?'active':''} onClick={()=>setMode('retail')}>{content.shop_retail_label}</button><button className={mode==='wholesale'?'active':''} onClick={()=>setMode('wholesale')}>{content.shop_wholesale_label}</button></div></div><div className="nx-filter-row"><button className={category==='all'?'active':''} onClick={()=>setCategory('all')}>{content.shop_all_label}</button>{categories.map(cat=><button key={cat} className={category===cat?'active':''} onClick={()=>setCategory(cat)}>{cat}</button>)}</div>{loading?<div className="nx-empty">{content.shop_loading_text}</div>:<div className="nx-grid">{visible.map(p=><ProductCard key={p.id} product={p} mode={mode} onOpen={openProduct} content={content}/>)}</div>}</section><section className="nx-wholesale" id="wholesale"><div><small>{content.wholesale_eyebrow}</small><h2>{site.wholesale_title}</h2><p>{site.wholesale_text}</p><ul><li>{content.wholesale_bullet_1}</li><li>{content.wholesale_bullet_2}</li><li>{content.wholesale_bullet_3}</li></ul></div><WholesaleForm content={content}/></section><section className="nx-editorial"><div className="nx-editorial-copy"><small>{content.editorial_eyebrow}</small><h2>{renderToken(content.editorial_title,vars)}</h2><p>{content.editorial_text}</p><a target="_blank" rel="noreferrer" href={content.editorial_cta_url || instagramUrl}>{content.editorial_cta_label}</a></div><div className="nx-editorial-grid">{editorial.map((img,i)=><a target="_blank" rel="noreferrer" href={content.editorial_cta_url || instagramUrl} key={`${img}-${i}`}><img src={img} alt="AVENZA style" loading="lazy"/></a>)}</div></section><section className="nx-about" id="about"><img src="/avenza-logo-v3.webp" alt="AVENZA"/><div><small>{content.about_eyebrow}</small><h2>{site.about_title}</h2><p>{site.about_text}</p></div></section><footer className="nx-footer"><div><img src="/avenza-logo-v3.webp" alt="AVENZA"/><b>{content.footer_brand}</b></div><div><span>{content.footer_instagram_label}</span><a target="_blank" rel="noreferrer" href={instagramUrl}>@{instagram}</a></div><div><span>{content.footer_contact_label}</span><a href={`tel:${site.phone}`}>{site.phone}</a><a target="_blank" rel="noreferrer" href={`https://wa.me/${whatsapp}`}>{content.footer_whatsapp_label}</a></div><div><span>{content.footer_address_label}</span><p>{site.address}</p></div></footer></>}<nav className="nx-mobile-nav"><button onClick={()=>navigate('/',setRoute)}>{content.mobile_home_label}</button><button onClick={()=>goTarget('#shop')}>{content.mobile_products_label}</button><button onClick={()=>setCartOpen(true)}>{content.mobile_cart_label} <b>{cartCount}</b></button></nav><CartDrawer open={cartOpen} cart={cart} mode={mode} onClose={()=>setCartOpen(false)} onQty={changeQty} onCheckout={()=>{setCartOpen(false);setCheckoutOpen(true)}} content={content}/><Checkout open={checkoutOpen} cart={cart} mode={mode} onClose={()=>setCheckoutOpen(false)} onDone={()=>{setCheckoutOpen(false);setCart([])}} content={content}/></div>
 }
