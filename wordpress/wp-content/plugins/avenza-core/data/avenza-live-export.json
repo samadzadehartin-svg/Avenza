@@ -1,0 +1,134 @@
+{
+  "exported_from": "bwirmonybyjayqgvhqno",
+  "exported_at": "2026-10-06",
+  "site_settings": {
+    "announcement": "Avenza",
+    "hero_eyebrow": "Avenza | تنها برای تو",
+    "hero_title": "Avenza",
+    "hero_subtitle": "",
+    "hero_image_url": "https://bwirmonybyjayqgvhqno.supabase.co/storage/v1/object/public/products/site/hero-1790855544194.png",
+    "about_title": "برای استایل های ساده , ماندگار و خاص",
+    "about_text": "تمرکز ما روی انتخاب‌هایی است که راحت پوشیده می‌شن، خوب می‌نشینند و از مد زودگذر فاصله دارند.\n(از جنس دیگه‌ای بریده شده)\nآونزا فقط یه برند نیست، یه نگرشه.\nشروع ماجرا ما با یه سوال شروع شد: چرا خوب پوشیدن باید با کمی کوتاه‌اومدن همراه باشه؟ خیلی از لباس‌ها روی چوب‌لباسی عالین ولی تو زندگی واقعی گم می‌شن. ما لباسی می‌خواستیم که با زندگیت جلو بیاد.\nهر طرح کشیده میشه تست < و > دوباره اصلاح می‌شه تا حس درست رو بده. پارچه‌ها طوری انتخاب می‌شن که راحت باشن، نفس بکشن و دوام بیارن.\nاون کیه که بی‌ادعا جسوره. دنبال ترند نمی‌دوئه، ریتم خودش رو داره.\n. اونزا برای اونه .",
+    "wholesale_title": "(لباسی بذار تو فروشگاهت که حرف‌ساز بشه)",
+    "wholesale_text": "کالکشن رو بیار تو فروشگاهت:\nمشتری‌هات از قفسه‌های تکراری خسته شدن. چیزی بذار تو فروشگاهت که ازش بپرسن، دوباره برگردن سراغش و یادشون نره.\n\nمزیت‌ها:\nطرح‌های متمایز: لباس‌هایی که فروشگاهت رو از بقیه جدا می‌کنن.\nسود هوشمند: قیمت عمده‌ای که برای رشد تو چیده شده.\nسفارش منعطف: کم شروع کن، هر وقت آماده بودی بزرگ‌تر شو.\nارتباط مستقیم با تیم آونزا، بدون واسطه.\n\nقیمت عمده و هماهنگی تعداد سفارش رو می‌خوای؟\nدرخواستت رو ثبت کن، ظرف ۴۸ ساعت باهات ارتباط می‌گیریم",
+    "instagram": "Avenza_co",
+    "phone": "09108456261",
+    "whatsapp": "09108456261",
+    "address": "تهران، فردوسی، نبش جمهوری، پاساژ کویتی‌های استانبول، واحد ۱۰۱",
+    "content": {
+      "cart_note": "پرداخت آنلاین فعلاً فعال نیست؛ سفارش ثبت می‌شود و پرداخت به صورت کارت به کارت است.",
+      "section_order": [
+        "hero",
+        "wholesale",
+        "about",
+        "shop",
+        "arrivals",
+        "trust",
+        "categories",
+        "editorial"
+      ],
+      "shop_retail_label": "فروش تکی",
+      "shop_wholesale_label": "فروش عمده",
+      "product_featured_badge": "پرفروش ها",
+      "footer_instagram_label": "اینستاگرام : Avenza_co@"
+    }
+  },
+  "products": [
+    {
+      "id": 1,
+      "name": "مانتو لینن بهاره",
+      "slug": "manto-linen-bahara",
+      "description": "مانتوی لینن سبک و مینیمال، مناسب استایل روزمره.",
+      "category": "مانتو",
+      "single_price": 2850000,
+      "wholesale_price": 1950000,
+      "image": null,
+      "stock": 30,
+      "active": true,
+      "featured": true,
+      "images": [],
+      "variants": [
+        {
+          "id": 1,
+          "product_id": 1,
+          "color": "مشکی",
+          "size": "M",
+          "stock": 10,
+          "sku": "AV-MANTO-BLK-M"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "شومیز ساتن",
+      "slug": "shomiz-satin",
+      "description": "شومیز ساتن نرم با فرم آزاد و ظاهر لوکس.",
+      "category": "شومیز",
+      "single_price": 1950000,
+      "wholesale_price": 1200000,
+      "image": null,
+      "stock": 30,
+      "active": true,
+      "featured": true,
+      "images": [],
+      "variants": [
+        {
+          "id": 2,
+          "product_id": 2,
+          "color": "کرم",
+          "size": "L",
+          "stock": 10,
+          "sku": "AV-SHOMIZ-CRM-L"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "ست مینیمال زنانه",
+      "slug": "set-minimal-zanane",
+      "description": "ست دو تکه مینیمال برای استایل شهری و روزمره.",
+      "category": "ست",
+      "single_price": 3200000,
+      "wholesale_price": 2400000,
+      "image": null,
+      "stock": 30,
+      "active": true,
+      "featured": true,
+      "images": [],
+      "variants": [
+        {
+          "id": 3,
+          "product_id": 3,
+          "color": "مشکی",
+          "size": "Free",
+          "stock": 10,
+          "sku": "AV-SET-BLK-F"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "نتمنتن",
+      "slug": "product-1790797016052",
+      "description": "فصیتبزرلاهخغعب",
+      "category": "نمن.ن",
+      "single_price": 900,
+      "wholesale_price": 800,
+      "image": null,
+      "stock": 0,
+      "active": false,
+      "featured": false,
+      "images": [],
+      "variants": [
+        {
+          "id": 4,
+          "product_id": 4,
+          "color": "مشکس",
+          "size": "m",
+          "stock": null,
+          "sku": "AV-4-مشک-m-xsko7"
+        }
+      ]
+    }
+  ]
+}

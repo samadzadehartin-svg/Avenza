@@ -1,0 +1,17 @@
+name: WordPress migration check
+on:
+  push:
+    branches: [wordpress-migration]
+  pull_request:
+    branches: [main]
+    paths:
+      - "wordpress/**"
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: PHP syntax
+        run: find wordpress -name '*.php' -print0 | xargs -0 -n1 php -l
+      - name: Validate migration JSON
+        run: python -m json.tool wordpress/wp-content/plugins/avenza-core/data/avenza-live-export.json >/dev/null
