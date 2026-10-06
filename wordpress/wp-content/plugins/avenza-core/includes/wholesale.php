@@ -222,3 +222,36 @@ function avenza_wholesale_requests_page() {
     }
     echo '</tbody></table></div>';
 }
+
+
+add_action('woocommerce_checkout_create_order', function ($order) {
+    $order->update_meta_data('_avenza_order_type', avenza_is_wholesale_user() ? 'wholesale' : 'retail');
+});
+
+add_action('woocommerce_admin_order_data_after_order_details', function ($order) {
+    $type = $order->get_meta('_avenza_order_type');
+    if (!$type) $type = 'retail';
+    echo '<p><strong>نوع سفارش AVENZA:</strong> ' . esc_html($type === 'wholesale' ? 'عمده' : 'تکی') . '</p>';
+});
+
+add_filter('manage_edit-shop_order_columns', function ($columns) {
+    $columns['avenza_order_type'] = 'نوع سفارش';
+    return $columns;
+}, 20);
+
+add_action('manage_shop_order_posts_custom_column', function ($column, $post_id) {
+    if ($column !== 'avenza_order_type') return;
+    $order = wc_get_order($post_id);
+    if (!$order) return;
+    echo esc_html($order->get_meta('_avenza_order_type') === 'wholesale' ? 'عمده' : 'تکی');
+}, 20, 2);
+
+add_filter('woocommerce_shop_order_list_table_columns', function ($columns) {
+    $columns['avenza_order_type'] = 'نوع سفارش';
+    return $columns;
+}, 20);
+
+add_action('woocommerce_shop_order_list_table_custom_column', function ($column, $order) {
+    if ($column !== 'avenza_order_type' || !$order instanceof WC_Order) return;
+    echo esc_html($order->get_meta('_avenza_order_type') === 'wholesale' ? 'عمده' : 'تکی');
+}, 20, 2);
