@@ -64,7 +64,7 @@ $categories = taxonomy_exists('product_cat') ? get_terms(array(
                 <?php if ($product->is_featured()) : ?><span>پرفروش</span><?php endif; ?>
             </a>
             <div class="av-product-copy">
-                <div><small><?php echo esc_html(wc_get_product_category_list($product->get_id(), ', ', '', '')); ?></small><h3><a href="<?php echo esc_url($product->get_permalink()); ?>"><?php echo esc_html($product->get_name()); ?></a></h3></div>
+                <div><small><?php echo esc_html(wp_strip_all_tags(wc_get_product_category_list($product->get_id(), ', ', '', ''))); ?></small><h3><a href="<?php echo esc_url($product->get_permalink()); ?>"><?php echo esc_html($product->get_name()); ?></a></h3></div>
                 <strong><?php echo wp_kses_post($product->get_price_html()); ?></strong>
             </div>
         </article>
