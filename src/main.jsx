@@ -6,6 +6,7 @@ import { OrderedStore, SectionOrderEditorPortal } from './SectionOrderManager.js
 import { LogoApplicator, LogoEditorPortal } from './LogoManager.jsx'
 import './boutique.css'
 import './store-next.css'
+import './customer-account.css'
 
 const isAdmin = /^\/admin\/?$/.test(window.location.pathname)
 if (isAdmin) {
